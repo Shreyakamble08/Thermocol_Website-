@@ -1,0 +1,165 @@
+<!-- ============================================================
+     Rishabh Thermocole — Common Header Component
+     Injected into #header-mount by header.js
+     ============================================================ -->
+
+<header id="site-header">
+
+    <!-- ---------- Utility Bar ---------- -->
+    <div class="utility-bar">
+        <div class="utility-inner">
+            <a href="tel:+919158700128" class="utility-item">
+                <span class="utility-icon" aria-hidden="true">☎</span>
+                <span class="utility-label">Call us</span>
+                <span class="utility-value">+91 9158700128</span>
+            </a>
+            <span class="utility-divider" aria-hidden="true"></span>
+            <a href="mailto:thermocoleart9121@hotmail.com" class="utility-item">
+                <span class="utility-icon" aria-hidden="true">✉</span>
+                <span class="utility-label">Email</span>
+                <span class="utility-value">thermocoleart9121@hotmail.com</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ---------- Main Navbar ---------- -->
+    <div class="navbar-inner">
+        <div class="navbar-row">
+
+
+            <!-- Logo -->
+            <a href="/index.html" class="logo-link" aria-label="Rishabh Green BuildTech home">
+                <img src="/images/logo.png" alt="Rishabh Green BuildTech" class="site-logo">
+            </a>
+
+
+            <!-- ---------- Desktop Navigation ---------- -->
+            <nav class="desktop-nav" aria-label="Primary">
+
+                <!-- Products -->
+                <div class="nav-item" data-dropdown>
+                    <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="dd-products">
+                        Products
+                        <span class="nav-caret" aria-hidden="true"></span>
+                    </button>
+                    <div id="dd-products" class="dropdown" role="menu" aria-hidden="true">
+                        <div class="dropdown-panel dropdown-single">
+                            <a href="/geofoam.html" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">EPS Geofoam</span>
+                                <span class="dropdown-desc">Lightweight fill for civil &amp; infrastructure</span>
+                            </a>
+                            <a href="/eifs.html" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">Exterior Insulation &amp; Finishing System</span>
+                                <span class="dropdown-desc">EIFS for thermal-efficient facades</span>
+                            </a>
+                            <a href="/eps3D.html" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">EPS 3D Panel</span>
+                                <span class="dropdown-desc">Modular construction panel system</span>
+                            </a>
+                            <a href="/facade-profile.html" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">Facade Profile</span>
+                                <span class="dropdown-desc">Architectural EPS profiles</span>
+                            </a>
+                            <!-- <a href="/other-products.html" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">Other Products</span>
+                                <span class="dropdown-desc">Specialized EPS components</span>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packaging -->
+                <div class="nav-item" data-dropdown>
+                    <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="dd-packaging">
+                        Packaging
+                        <span class="nav-caret" aria-hidden="true"></span>
+                    </button>
+                    <div id="dd-packaging" class="dropdown" role="menu" aria-hidden="true">
+                        <div class="dropdown-panel dropdown-single">
+                            <a href="/industrial-packaging.php" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">Industrial Packaging</span>
+                                <span class="dropdown-desc">Protective EPS packaging for industry</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sustainability -->
+                <div class="nav-item" data-dropdown>
+                    <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="dd-sustainability">
+                        Sustainability
+                        <span class="nav-caret" aria-hidden="true"></span>
+                    </button>
+                    <div id="dd-sustainability" class="dropdown" role="menu" aria-hidden="true">
+                        <div class="dropdown-panel dropdown-single">
+                            <a href="/eps-recycling.php" data-nav-link class="dropdown-link" role="menuitem">
+                                <span class="dropdown-label">EPS Recycling</span>
+                                <span class="dropdown-desc">Recycling &amp; material recovery programs</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <a href="/gallery.php" data-nav-link class="nav-link">Gallery</a>
+
+                <!-- Contact Us -->
+                <a href="/contact.php" data-nav-link class="nav-link">Contact Us</a>
+
+            </nav>
+
+            <!-- ---------- Right side actions ---------- -->
+            <div class="navbar-actions">
+                <a href="/contact.php" class="btn-solid">
+                    <span>Request a Quote</span>
+                </a>
+
+                <button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false"
+                    aria-controls="mobile-menu" aria-label="Open menu">
+                    <span class="hamburger" id="hamburger-icon">
+                        <span></span><span></span><span></span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Backdrop for mobile menu -->
+    <div id="mobile-backdrop" class="mobile-backdrop" aria-hidden="true"></div>
+
+    <!-- ---------- Mobile menu panel ---------- -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-head">
+            <span class="mobile-head-title">Menu</span>
+            <button type="button" id="mobile-close" class="mobile-close" aria-label="Close menu">
+                <span></span><span></span>
+            </button>
+        </div>
+
+        <nav aria-label="Primary (mobile)" class="mobile-inner">
+
+            <div class="mobile-contact">
+                <a href="tel:+919158700128" class="mobile-contact-item">
+                    <span class="mobile-contact-label">Call us</span>
+                    <span class="mobile-contact-value">+91 9158700128</span>
+                </a>
+                <a href="mailto:thermocoleart9121@hotmail.com" class="mobile-contact-item">
+                    <span class="mobile-contact-label">Email</span>
+                    <span class="mobile-contact-value">thermocoleart9121@hotmail.com</span>
+                </a>
+            </div>
+
+            <div class="mobile-actions">
+                <a href="/contact.php" class="mobile-btn mobile-btn-solid">Request a Quote</a>
+            </div>
+
+            <div class="mobile-group mobile-group-flat">
+                <a href="/gallery.php" data-nav-link class="mobile-flat-link">Gallery</a>
+                <a href="/contact.php" data-nav-link class="mobile-flat-link">Contact Us</a>
+            </div>
+
+        </nav>
+    </div>
+
+</header>

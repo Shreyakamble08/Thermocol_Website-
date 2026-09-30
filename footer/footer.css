@@ -1,0 +1,370 @@
+/* ============================================================
+   Rishabh Thermocole — Footer Component Styles
+   Scoped under #site-footer
+   Layout: side-by-side (brand | links)
+   ============================================================ */
+
+#site-footer {
+  background: linear-gradient(180deg, #003C47 0%, #002c35 100%);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 64px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* Subtle architectural grid texture */
+#site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   TOP SECTION — Side by side (brand | links)
+   ============================================================ */
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+/* Desktop: brand takes 1fr, links take 2fr */
+@media (min-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+}
+
+/* ============================================================
+   BRAND COLUMN
+   ============================================================ */
+
+.footer-brand {
+  max-width: 340px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+
+.footer-logo .logo-mark {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.footer-logo .logo-mark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-left: 3px solid #D8B64C;
+  border-bottom: 3px solid #D8B64C;
+}
+
+.footer-logo .logo-mark::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: #3a7d5c;
+  bottom: 0;
+  left: 0;
+  opacity: 0.9;
+}
+
+.footer-logo .logo-text {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.footer-logo .logo-name {
+  display: block;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: #D8B64C;
+}
+
+.footer-logo .logo-sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F7F7F2;
+  margin-top: 4px;
+}
+
+.footer-desc {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.42);
+  margin-bottom: 22px;
+  max-width: 320px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 13px;
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.footer-social a:hover {
+  background: #D8B64C;
+  color: #003C47;
+  border-color: #D8B64C;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   LINKS — 3 columns side by side on desktop
+   ============================================================ */
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+}
+
+@media (min-width: 640px) {
+  .footer-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-links {
+    gap: 48px 40px;
+  }
+}
+
+.footer-col h4 {
+  color: #F7F7F2;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* Small gold rule under each column heading */
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  background: #D8B64C;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.footer-col a:hover {
+  color: #D8B64C;
+  padding-left: 3px;
+}
+
+/* ============================================================
+   CONTACT COLUMN (compact)
+   ============================================================ */
+
+.footer-col-contact .footer-contact {
+  gap: 14px;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.footer-contact i {
+  color: #D8B64C;
+  font-size: 12px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+}
+
+.footer-contact a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding-left: 0;
+}
+
+.footer-contact a:hover {
+  color: #D8B64C;
+  padding-left: 0;
+}
+
+/* ============================================================
+   BOTTOM BAR
+   ============================================================ */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer-copy {
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 12px;
+}
+
+.footer-legal a:hover {
+  color: #D8B64C;
+}
+
+.footer-legal-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 640px)
+   ============================================================ */
+
+@media (max-width: 639px) {
+  #site-footer {
+    padding: 48px 0 24px;
+  }
+
+  .footer-inner {
+    padding: 0 20px;
+  }
+
+  .footer-top {
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 20px;
+  }
+
+  /* Contact column takes full width on mobile */
+  .footer-col-contact {
+    grid-column: 1 / -1;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+/* ============================================================
+   Safe-area padding for iOS notched devices
+   ============================================================ */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  #site-footer {
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+}

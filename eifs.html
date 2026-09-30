@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exterior Insulation &amp; Finishing Systems (EIFS) — Rishabh Thermocole</title>
+    <meta name="description"
+        content="Complete EIFS / ETICS cladding systems — multi-component exterior insulation with 55%+ air infiltration reduction and unlimited design flexibility. Proven in Europe for 55+ years." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50: '#eef5f6', 100: '#d5e6e9', 200: '#aecdd4',
+                            300: '#7dafb9', 400: '#4b8d99', 500: '#2a6f7c',
+                            600: '#1e5864', 700: '#164550', 800: '#0e333c',
+                            900: '#003C47', 950: '#00262e'
+                        },
+                        green: { DEFAULT: '#3a7d5c', light: '#5a9e7a', dark: '#2a5f44' },
+                        gold: { DEFAULT: '#D8B64C', light: '#E5C65A', dark: '#b89a3a' },
+                        red: { DEFAULT: '#B8433A', light: '#d05a50' },
+                        warm: { DEFAULT: '#F7F7F2', light: '#FCFCF9', dark: '#EEEEE7' }
+                    },
+                    letterSpacing: { 'ultra': '0.2em', 'wide-plus': '0.12em' },
+                    maxWidth: { content: '1200px' }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header/header.css" />
+    <link rel="stylesheet" href="footer/footer.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+        /* ========================================================
+           EIFS PAGE — unique layout elements
+           ======================================================== */
+        /* ========================================================
+   EIFS PAGE — Layer Index (side-by-side layout)
+   ======================================================== */
+
+        .layer-row {
+            display: grid;
+            grid-template-columns: 32px 52px 1fr;
+            grid-template-areas:
+                "num tag title"
+                "num tag desc";
+            align-items: center;
+            column-gap: 12px;
+            row-gap: 2px;
+            padding: 9px 10px;
+            border-bottom: 1px solid rgba(0, 60, 71, 0.08);
+            transition: background-color 0.25s ease, padding-left 0.25s ease;
+        }
+
+        .layer-row:hover {
+            background: #FCFCF9;
+            padding-left: 14px;
+        }
+
+        .layer-row:last-child {
+            border-bottom: 0;
+        }
+
+        .layer-num {
+            grid-area: num;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 2px;
+            background: rgba(0, 60, 71, 0.06);
+            color: #003C47;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .layer-row:hover .layer-num {
+            background: #D8B64C;
+            color: #003C47;
+        }
+
+        .layer-tag {
+            grid-area: tag;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            padding: 0 8px;
+            background: rgba(216, 182, 76, 0.14);
+            color: #8a7028;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        .layer-title {
+            grid-area: title;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #003C47;
+            line-height: 1.2;
+            align-self: end;
+        }
+
+        .layer-desc {
+            grid-area: desc;
+            font-size: 11.5px;
+            color: rgba(0, 60, 71, 0.5);
+            line-height: 1.35;
+            align-self: start;
+        }
+
+        /* ---------- Core layer (03) highlight ---------- */
+        .layer-row-core {
+            background: #003C47;
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .layer-row-core:hover {
+            background: #0e333c;
+            padding-left: 14px;
+        }
+
+        .layer-row-core .layer-num {
+            background: #D8B64C;
+            color: #003C47;
+        }
+
+        .layer-row-core .layer-tag {
+            background: rgba(216, 182, 76, 0.2);
+            color: #D8B64C;
+        }
+
+        .layer-row-core .layer-title {
+            color: #F7F7F2;
+        }
+
+        .layer-row-core .layer-desc {
+            color: rgba(247, 247, 242, 0.55);
+        }
+
+        /* ---------- Mobile adjustments ---------- */
+        @media (max-width: 639px) {
+            .layer-row {
+                grid-template-columns: 28px 1fr;
+                grid-template-areas:
+                    "num title"
+                    "tag desc";
+                column-gap: 10px;
+                row-gap: 4px;
+                padding: 11px 8px;
+            }
+
+            .layer-num {
+                width: 26px;
+                height: 26px;
+                font-size: 9px;
+            }
+
+            .layer-tag {
+                justify-self: start;
+                align-self: start;
+                margin-top: 2px;
+            }
+
+            .layer-title {
+                font-size: 13px;
+                align-self: center;
+            }
+
+            .layer-desc {
+                grid-column: 2;
+                font-size: 11px;
+            }
+        }
+
+        /* ---------- Feature checklist (2-col) ---------- */
+        .feature-checklist {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0;
+            border-top: 1px solid rgba(20, 60, 74, 0.08);
+            border-left: 1px solid rgba(20, 60, 74, 0.08);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 9px 12px;
+            border-right: 1px solid rgba(20, 60, 74, 0.08);
+            border-bottom: 1px solid rgba(20, 60, 74, 0.08);
+        }
+
+        .feature-text {
+            font-size: 12px;
+            line-height: 1.3;
+            color: rgba(20, 60, 74, 0.75);
+        }
+
+        .feature-check {
+            width: 6px;
+            height: 6px;
+            flex: 0 0 6px;
+            border-radius: 50%;
+            background: #e39f32;
+        }
+
+        @media (max-width: 768px) {
+            .feature-checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-item {
+                min-height: 38px;
+                padding: 8px 10px;
+            }
+
+            .feature-text {
+                font-size: 11px;
+            }
+        }
+
+        /* ---------- Asymmetric performance grid ---------- */
+        .perf-image-block {
+            position: relative;
+        }
+
+        .perf-image-block::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            right: -12px;
+            height: 4px;
+            background: #D8B64C;
+        }
+
+        /* ---------- Spec table (datasheet style) ---------- */
+        .datasheet {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 640px) {
+            .datasheet {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .datasheet-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .datasheet-row:nth-child(even) {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        @media (min-width: 640px) {
+            .datasheet-row:nth-child(even) {
+                background: transparent;
+            }
+
+            .datasheet-row:nth-child(4n + 3),
+            .datasheet-row:nth-child(4n + 4) {
+                background: rgba(255, 255, 255, 0.015);
+            }
+        }
+
+        .datasheet-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            flex-shrink: 0;
+            min-width: 130px;
+        }
+
+        .datasheet-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #F7F7F2;
+            line-height: 1.4;
+        }
+
+        /* ---------- Centered hero with full-bleed image ---------- */
+        .hero-bleed {
+            position: relative;
+            height: 340px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .hero-bleed {
+                height: 420px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-bleed {
+                height: 480px;
+            }
+        }
+
+        .hero-bleed img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-bleed-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 60, 71, 0.1) 0%, rgba(0, 60, 71, 0.5) 100%);
+        }
+
+        /* ---------- Alt/dark band ---------- */
+        .band-warm {
+            background: #F7F7F2;
+        }
+
+        .band-warm-light {
+            background: #FCFCF9;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-warm text-teal-900 antialiased overflow-x-hidden">
+
+    <!-- Header mount -->
+    <div id="header-mount"></div>
+
+    <main>
+        <!-- ============ HERO (Background image + centred overlay content) ============ -->
+        <section class="relative bg-teal-900 overflow-hidden min-h-[420px] lg:min-h-[520px] flex items-center">
+
+            <!-- Background image -->
+            <div class="absolute inset-0">
+                <img src="https://sika.scene7.com/is/image/sika/glo-etics-eifs-thermal-insulation-facade-buildup-yellow?wid=1920&hei=1440&fit=crop%2C1"
+                    alt="EIFS facade system" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Gradient overlay for readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/75 via-teal-900/55 to-teal-900/90"></div>
+
+            <!-- Architectural grid -->
+            <div class="absolute inset-0 arch-grid-dark opacity-40"></div>
+
+            <!-- Centred content -->
+            <div class="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 text-center py-14 lg:py-18 text-warm">
+
+                <!-- Eyebrow -->
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <span class="w-8 h-px bg-gold/60"></span>
+                    <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Product 02 — Facade
+                        Systems</span>
+                    <span class="w-8 h-px bg-gold/60"></span>
+                </div>
+
+                <!-- Headline -->
+                <h1
+                    class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight text-warm">
+                    Exterior Insulation<br>
+                    &amp; Finishing Systems<span class="text-gold">.</span>
+                </h1>
+
+                <!-- Subline -->
+                <p class="mt-5 text-warm/70 text-sm tracking-wide-plus uppercase font-bold">
+                    EIFS · ETICS · EWIS — Proven in Europe for 55+ years
+                </p>
+
+                <!-- Inline metrics -->
+                <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg mx-auto border-t border-warm/15 pt-6">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-warm">55<span
+                                class="text-base text-gold ml-0.5">+</span></div>
+                        <div class="text-[9px] tracking-ultra uppercase text-warm/50 font-bold mt-1">Years proven</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-warm">55<span
+                                class="text-base text-gold ml-0.5">%</span></div>
+                        <div class="text-[9px] tracking-ultra uppercase text-warm/50 font-bold mt-1">Less infiltration
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-warm">R-16<span
+                                class="text-base text-gold ml-0.5">+</span></div>
+                        <div class="text-[9px] tracking-ultra uppercase text-warm/50 font-bold mt-1">Wall rating</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SYSTEM LAYERS (Side-by-side) ============ -->
+        <section id="layers" class="py-10 lg:py-12 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <!-- Compact header -->
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <span class="vertical-line-teal"></span>
+                        <div>
+                            <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">System
+                                Build-Up</div>
+                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight">
+                                Seven layers, engineered as one<span class="text-gold">.</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <p class="text-teal-700/60 text-xs leading-relaxed max-w-sm">
+                        From substrate prep through insulation, reinforcement and the finished acrylic coat.
+                    </p>
+                </div>
+
+                <!-- Two-column: index (left) + visual panel (right) -->
+                <div class="grid lg:grid-cols-12 gap-5 lg:gap-6 items-stretch">
+
+                    <!-- LEFT: Layer index -->
+                    <div class="lg:col-span-7 border-t border-teal-900/10">
+
+                        <div class="layer-row group">
+                            <span class="layer-num">01</span>
+                            <span class="layer-tag">Base</span>
+                            <span class="layer-title">Wall Substrate</span>
+                            <span class="layer-desc">Rigid backing — gypsum sheathing, concrete block, or steel stud
+                                wall.</span>
+                        </div>
+
+                        <div class="layer-row group">
+                            <span class="layer-num">02</span>
+                            <span class="layer-tag">Fix</span>
+                            <span class="layer-title">Board Fixing Adhesive</span>
+                            <span class="layer-desc">Structural adhesive fixing the board to the substrate.</span>
+                        </div>
+
+                        <div class="layer-row layer-row group">
+                            <span class="layer-num">03</span>
+                            <span class="layer-tag">Core</span>
+                            <span class="layer-title">Insulation Board — XPS / EPS</span>
+                            <span class="layer-desc">R-4 to R-5.6 per inch. Continuous Insulation (CI).</span>
+                        </div>
+
+                        <div class="layer-row group">
+                            <span class="layer-num">04</span>
+                            <span class="layer-tag">Bond</span>
+                            <span class="layer-title">Base Coat</span>
+                            <span class="layer-desc">Cementitious layer binding mesh to insulation.</span>
+                        </div>
+
+                        <div class="layer-row group">
+                            <span class="layer-num">05</span>
+                            <span class="layer-tag">Crack</span>
+                            <span class="layer-title">Reinforcing Mesh</span>
+                            <span class="layer-desc">Alkali-resistant fiberglass mesh for crack resistance.</span>
+                        </div>
+
+                        <div class="layer-row group">
+                            <span class="layer-num">06</span>
+                            <span class="layer-tag">Prep</span>
+                            <span class="layer-title">Prime Coat</span>
+                            <span class="layer-desc">Improves adhesion and uniformity of the final coat.</span>
+                        </div>
+
+                        <div class="layer-row group">
+                            <span class="layer-num">07</span>
+                            <span class="layer-tag">Finish</span>
+                            <span class="layer-title">Finishing Coat</span>
+                            <span class="layer-desc">100% acrylic binder — integral color, fade and chalk
+                                resistant.</span>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT: Visual panel -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="sticky top-28 h-full min-h-[420px] flex flex-col">
+
+                            <!-- Image -->
+                            <div class="relative flex-1 overflow-hidden rounded-sm shadow-lg bg-teal-900">
+                                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
+                                    alt="EIFS insulation board installation"
+                                    class="absolute inset-0 w-full h-full object-cover opacity-70" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-teal-900/95 via-teal-900/40 to-transparent">
+                                </div>
+
+                                <!-- Overlay content -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-warm">
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="w-6 h-px bg-gold"></span>
+                                        <span class="text-[10px] tracking-ultra uppercase font-bold text-gold">Core
+                                            Layer · 03</span>
+                                    </div>
+                                    <h3 class="text-lg lg:text-xl font-extrabold leading-tight mb-2">
+                                        The thermal heart of the system.
+                                    </h3>
+                                    <p class="text-xs text-warm/70 leading-relaxed max-w-xs">
+                                        XPS or EPS board — R-4 to R-5.6 per inch of continuous insulation.
+                                        Eliminates thermal bridges and boosts total wall R-value to R-16+.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURES (2-col checklist — datasheet style) ============ -->
+        <section class="py-10 lg:py-12 bg-warm border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <!-- Section Header -->
+                <div class="grid lg:grid-cols-12 gap-4 lg:gap-8 items-center mb-6">
+
+                    <div class="lg:col-span-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="vertical-line-teal"></span>
+                            <span class="text-[9px] tracking-ultra text-teal-600 font-bold uppercase">
+                                Features
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-[1.05]">
+                            What you get, in writing<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-7 lg:pl-6 lg:border-l lg:border-teal-900/10">
+                        <p class="text-teal-700/60 text-xs sm:text-sm leading-relaxed max-w-xl">
+                            Every EIFS component is engineered for long-term performance.
+                            Here's a complete inventory of what a full system delivers.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Compact Checklist Grid -->
+                <div class="feature-checklist">
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Fire Retardant</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Lightweight</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Good Insulator with Long-Term R-Value</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Recyclable</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Easy to Apply</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Good Dimensional Stability</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Prevents Cracks Due to Expansion</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">CFC, HCFC Free</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Good Elastic Properties</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">High Impact Resistance</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Eco Friendly</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-check"></span>
+                        <span class="feature-text">Continuous Insulation (CI) Compliant</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ PERFORMANCE (Asymmetric 7/5 grid) ============ -->
+        <section class="py-16 lg:py-20 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <!-- LEFT: Image block (5 cols) -->
+                    <div class="lg:col-span-5 relative order-2 lg:order-1">
+                        <div class="perf-image-block">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+                                alt="EIFS facade application"
+                                class="relative w-full h-[320px] sm:h-[400px] lg:h-[520px] object-cover rounded-sm shadow-xl" />
+                            <div
+                                class="absolute bottom-4 left-4 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-3 py-2 shadow-sm">
+                             
+                                <div class="text-[10px] font-bold text-teal-900 mt-0.5">EIFS Application</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Content (7 cols) -->
+                    <div class="lg:col-span-7 order-1 lg:order-2">
+
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="vertical-line-teal"></span>
+                            <span
+                                class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Performance</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-900 leading-[1.05] mb-6">
+                            Engineered performance, independently validated<span class="text-gold">.</span>
+                        </h2>
+
+                        <!-- Performance rows -->
+                        <div class="space-y-6">
+
+                            <!-- Row 1 -->
+                            <div class="pb-6 border-b border-teal-900/10">
+                                <div class="flex items-start gap-4">
+                                    <span class="text-gold text-lg font-extrabold flex-shrink-0">01</span>
+                                    <div>
+                                        <h3 class="text-base font-extrabold text-teal-900 mb-2">Durability</h3>
+                                        <p class="text-sm text-teal-700/70 leading-relaxed">
+                                            Formulated with 100% acrylic binder — resists fading, chalking
+                                            and yellowing. Color is integral to the finish, so scratches
+                                            reveal the same color beneath. Highly crack-resistant due to
+                                            system flexibility. Passed the Miami-Dade Hurricane Test.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="pb-6 border-b border-teal-900/10">
+                                <div class="flex items-start gap-4">
+                                    <span class="text-gold text-lg font-extrabold flex-shrink-0">02</span>
+                                    <div>
+                                        <h3 class="text-base font-extrabold text-teal-900 mb-2">Design Flexibility</h3>
+                                        <p class="text-sm text-teal-700/70 leading-relaxed">
+                                            Virtually limitless colors and textures. Can be fashioned into
+                                            almost any shape — cornices, arches, columns, keystones,
+                                            cornerstones, special moldings, and decorative accents that
+                                            would be cost-prohibitive using conventional construction.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div>
+                                <div class="flex items-start gap-4">
+                                    <span class="text-gold text-lg font-extrabold flex-shrink-0">03</span>
+                                    <div>
+                                        <h3 class="text-base font-extrabold text-teal-900 mb-2">Moisture Control</h3>
+                                        <p class="text-sm text-teal-700/70 leading-relaxed">
+                                            Oak Ridge National Laboratory research — supported by the US
+                                            Department of Energy — validated EIFS as the best-performing
+                                            cladding for thermal and moisture control compared to brick,
+                                            stucco and fiber cement. Requires correct installation and
+                                            proper detailing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TECHNICAL DATASHEET (Dark, tabular) ============ -->
+        <section id="specifications" class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="vertical-line"></span>
+                            <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Technical
+                                Datasheet</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.1]">
+                            Engineered to your job spec<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                
+                </div>
+
+                <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-2xl">
+                    Complete EIFS systems combining EPS/XPS insulation cores, acrylic finishes
+                    and reinforced base coats. Contact our team for the full specification sheet
+                    including R-values, impact resistance and fire performance data.
+                </p>
+
+                <!-- Datasheet grid -->
+                <div class="datasheet">
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">System</span>
+                        <span class="datasheet-value">EIFS / ETICS / EWIS</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Insulation Core</span>
+                        <span class="datasheet-value">XPS / EPS board</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">R-Value per Inch</span>
+                        <span class="datasheet-value">R-4 to R-5.6</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Wall R-Value (Total)</span>
+                        <span class="datasheet-value">R-16 or higher</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Air Infiltration</span>
+                        <span class="datasheet-value">Reduced by up to 55%</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Finish Binder</span>
+                        <span class="datasheet-value">100% acrylic</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Standards</span>
+                        <span class="datasheet-value">ASHRAE 90.1 · Miami-Dade Hurricane Test</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Compliance</span>
+                        <span class="datasheet-value">Continuous Insulation (CI) · CFC-free · HCFC-free</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Installation</span>
+                        <span class="datasheet-value">Professional application required</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Wind Resistance</span>
+                        <span class="datasheet-value">Miami-Dade certified</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Substrates</span>
+                        <span class="datasheet-value">Gypsum · Concrete block · Steel stud</span>
+                    </div>
+                    <div class="datasheet-row">
+                        <span class="datasheet-label">Environment</span>
+                        <span class="datasheet-value">Recyclable · CFC &amp; HCFC free</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ DEFINITION STRIP (EIFS · ETICS · EWIS) ============ -->
+        <section class="py-12 lg:py-14 bg-warm border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="flex items-center gap-3 mb-6 justify-center">
+                    <span class="w-8 h-px bg-teal-900/20"></span>
+                    <span class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/40">Also known as</span>
+                    <span class="w-8 h-px bg-teal-900/20"></span>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-3 lg:gap-4 max-w-3xl mx-auto">
+                    <div class="border border-teal-100 rounded-sm p-5 text-center bg-warm-light">
+                        <div class="text-2xl font-extrabold text-teal-900 mb-1">EIFS</div>
+                        <div class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/50 leading-tight">
+                            Exterior Insulation<br>Finishing System
+                        </div>
+                    </div>
+                    <div class="border border-teal-100 rounded-sm p-5 text-center bg-warm-light">
+                        <div class="text-2xl font-extrabold text-teal-900 mb-1">ETICS</div>
+                        <div class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/50 leading-tight">
+                            Exterior Thermal<br>Insulation Composite System
+                        </div>
+                    </div>
+                    <div class="border border-teal-100 rounded-sm p-5 text-center bg-warm-light">
+                        <div class="text-2xl font-extrabold text-teal-900 mb-1">EWIS</div>
+                        <div class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/50 leading-tight">
+                            Exterior Wall<br>Insulation System
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ CTA BAND ============ -->
+        <!-- <section class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div
+                class="max-w-content mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div>
+                    <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Ready to specify?</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+                        Talk to our team about your EIFS requirement<span class="text-gold">.</span>
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/contact.php"
+                        class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
+                        Request a Quote
+                        <span
+                            class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                    </a>
+                    <a href="tel:+919158700128"
+                        class="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-white/20 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors whitespace-nowrap">
+                        <i class="fas fa-phone text-xs"></i>
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+
+    <div id="footer-mount"></div>
+
+    <script src="header/header.js" defer></script>
+    <script src="footer/footer.js" defer></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // Smooth scroll for internal anchors
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var href = a.getAttribute('href');
+                    if (href.length > 1) {
+                        var target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

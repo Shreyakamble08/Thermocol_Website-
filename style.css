@@ -1,0 +1,450 @@
+/* ============================================================
+   RISHABH THERMOCOLE — GLOBAL STYLESHEET
+   ============================================================
+   Sections:
+     1. Architectural helpers (grid, lines, cards, reveal)
+     2. Typography helpers
+     3. Buttons
+     4. HERO — Blueprint Spread (compact)
+     5. HERO — Slide rail
+     6. Scrollbar
+   ============================================================ */
+
+/* ============================================================
+   1. ARCHITECTURAL HELPERS
+   ============================================================ */
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* Blueprint grid — light backgrounds */
+.arch-grid {
+  background-image:
+    linear-gradient(rgba(0, 60, 71, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 60, 71, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Blueprint grid — dark backgrounds */
+.arch-grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Vertical accent hairlines */
+.vertical-line {
+  width: 1px;
+  height: 60px;
+  background: #d8b64c;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.vertical-line-teal {
+  width: 1px;
+  height: 48px;
+  background: #003c47;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Card hover */
+.card-arch {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card-arch:hover {
+  transform: translateY(-4px);
+  border-color: #d8b64c;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   2. TYPOGRAPHY HELPERS
+   ============================================================ */
+
+/* Uppercase technical labels with letter-spacing */
+.tech-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   3. BUTTONS
+   ============================================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  background: #003c47;
+  color: #f7f7f2;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: #0e333c;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  background: transparent;
+  border: 1px solid rgba(0, 60, 71, 0.3);
+  color: #003c47;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn-outline:hover {
+  border-color: #d8b64c;
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   4. HERO — BLUEPRINT SPREAD (COMPACT)
+   ============================================================ */
+
+/* ---------- Slide show / hide + entry animation ---------- */
+.hero-slide {
+  display: none;
+}
+
+.hero-slide.is-active {
+  display: block;
+  animation: heroSlideIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slow zoom on active slide image */
+.hero-slide .hero-bg-img {
+  transform: scale(1.05);
+  transition: transform 9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-slide.is-active .hero-bg-img {
+  transform: scale(1);
+}
+
+/* Hairline draw-in for eyebrow line */
+.hero-slide.is-active .w-10.h-px,
+.hero-slide.is-active .w-12.h-px {
+  animation: lineDraw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  transform-origin: left center;
+}
+
+@keyframes lineDraw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ============================================================
+   5. HERO — SLIDE RAIL (right column, compact)
+   ============================================================ */
+
+.hero-rail {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(0, 60, 71, 0.08);
+  border-radius: 2px;
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-rail:hover {
+  border-color: rgba(216, 182, 76, 0.5);
+  background: rgba(216, 182, 76, 0.03);
+}
+
+.hero-rail.is-active {
+  background: #003c47;
+  border-color: #003c47;
+  box-shadow: 0 6px 16px -6px rgba(0, 60, 71, 0.3);
+}
+
+.hero-rail-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: rgba(0, 60, 71, 0.06);
+  color: #003c47;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition: all 0.35s ease;
+}
+
+.hero-rail.is-active .hero-rail-num {
+  background: #d8b64c;
+  color: #003c47;
+}
+
+.hero-rail-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #003c47;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-rail.is-active .hero-rail-label {
+  color: #f7f7f2;
+}
+
+.hero-rail-sub {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 60, 71, 0.45);
+  margin-top: 2px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-rail.is-active .hero-rail-sub {
+  color: rgba(247, 247, 242, 0.55);
+}
+
+.hero-rail-bar {
+  display: block;
+  width: 2px;
+  height: 0;
+  background: #d8b64c;
+  border-radius: 2px;
+  align-self: stretch;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-rail.is-active .hero-rail-bar {
+  height: 100%;
+  animation: railBarFill 7s linear forwards;
+}
+
+/* Mobile dots */
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 2px solid rgba(0, 60, 71, 0.25);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-dot:hover {
+  border-color: #d8b64c;
+}
+
+.hero-dot.is-active {
+  background: #d8b64c;
+  border-color: #d8b64c;
+  width: 28px;
+  border-radius: 6px;
+}
+
+@keyframes railBarFill {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+/* Hide rail on mobile */
+@media (max-width: 1023px) {
+  .hero-rail {
+    display: none;
+  }
+}
+
+/* ============================================================
+   6. CUSTOM SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f7f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003c47;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d8b64c;
+}
+
+/* ============================================================
+   7. RESPONSIVE — HERO
+   ============================================================ */
+
+/* ---------- Tablet (768–1023px) ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-slide.is-active {
+    animation-duration: 0.7s;
+  }
+}
+
+/* ---------- Mobile (≤ 767px) ---------- */
+@media (max-width: 767px) {
+  .hero-slide.is-active {
+    animation-duration: 0.6s;
+  }
+
+  /* Reduce zoom to avoid jank on low-power devices */
+  .hero-slide .hero-bg-img {
+    transform: scale(1.03);
+    transition: transform 6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-slide.is-active .hero-bg-img {
+    transform: scale(1);
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-slide .hero-bg-img,
+  .hero-slide.is-active .hero-bg-img {
+    transform: none;
+    transition: none;
+  }
+
+  .hero-slide.is-active .w-10.h-px,
+  .hero-slide.is-active .w-12.h-px {
+    animation: none;
+  }
+
+  .hero-rail.is-active .hero-rail-bar {
+    animation: none;
+    height: 100%;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   PRODUCT CARDS — homepage
+   ============================================================ */
+
+/* Truncate description to 2 lines */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card hover: subtle lift + border tint */
+.product-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(216, 182, 76, 0.5);
+  box-shadow: 0 12px 28px -14px rgba(0, 60, 71, 0.15);
+}
+
+/* ============================================================
+   8. UTILITY — prevent body scroll when mobile menu open
+   ============================================================ */
+
+body.mobile-menu-open {
+  overflow: hidden;
+}

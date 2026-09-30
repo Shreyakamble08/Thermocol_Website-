@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EPS Geofoam Suppliers — Rishabh Thermocole</title>
+    <meta name="description"
+        content="Lightweight EPS Geofoam for embankments, bridge abutments and civil infrastructure — 100× lighter than soil, 100% recyclable, made in Maharashtra." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50: '#eef5f6', 100: '#d5e6e9', 200: '#aecdd4',
+                            300: '#7dafb9', 400: '#4b8d99', 500: '#2a6f7c',
+                            600: '#1e5864', 700: '#164550', 800: '#0e333c',
+                            900: '#003C47', 950: '#00262e'
+                        },
+                        green: { DEFAULT: '#3a7d5c', light: '#5a9e7a', dark: '#2a5f44' },
+                        gold: { DEFAULT: '#D8B64C', light: '#E5C65A', dark: '#b89a3a' },
+                        red: { DEFAULT: '#B8433A', light: '#d05a50' },
+                        warm: { DEFAULT: '#F7F7F2', light: '#FCFCF9', dark: '#EEEEE7' }
+                    },
+                    letterSpacing: { 'ultra': '0.2em', 'wide-plus': '0.12em' },
+                    maxWidth: { content: '1200px' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="header/header.css" />
+    <link rel="stylesheet" href="footer/footer.css" />
+
+    <!-- Page-specific styles (inline, minimal) -->
+    <style>
+        /* Hero image treatment */
+        .geo-hero-img {
+            filter: saturate(0.9) contrast(1.05);
+        }
+
+        /* Spec list — dotted rules */
+        /* ============================================================
+   TECHNICAL SPECIFICATIONS — spec rows
+   Mobile: stacked label / value
+   Desktop: dotted row with label … value
+   ============================================================ */
+
+        /* ---------- Row layout ---------- */
+        .spec-row {
+            padding: 14px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .spec-row:last-child {
+            border-bottom: 0;
+        }
+
+        /* ---------- Label ---------- */
+        .spec-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 4px;
+        }
+
+        /* ---------- Value ---------- */
+        .spec-value {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #F7F7F2;
+            line-height: 1.5;
+        }
+
+        /* ---------- Dotted leader — hidden on mobile ---------- */
+        .spec-dots {
+            display: none;
+        }
+
+        /* ============================================================
+   DESKTOP (≥ 640px): label … dots … value
+   ============================================================ */
+        @media (min-width: 640px) {
+            .spec-row {
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                padding: 12px 0;
+            }
+
+            .spec-label {
+                flex-shrink: 0;
+                min-width: 140px;
+                margin-bottom: 0;
+                font-size: 11px;
+            }
+
+            .spec-dots {
+                display: block;
+                flex: 1;
+                height: 0;
+                border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
+                transform: translateY(-3px);
+                min-width: 20px;
+            }
+
+            .spec-value {
+                flex-shrink: 0;
+                max-width: 60%;
+                font-size: 14px;
+                text-align: right;
+                white-space: normal;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .spec-label {
+                min-width: 150px;
+            }
+
+            .spec-value {
+                max-width: 55%;
+            }
+        }
+
+        /* Application tiles */
+    
+        .app-tile {
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .app-tile:hover {
+            background: #003C47;
+            color: #F7F7F2;
+            transform: translateY(-2px);
+        }
+
+        .app-tile:hover .app-tile-num {
+            color: #D8B64C;
+            border-color: #D8B64C;
+        }
+
+        .app-tile:hover h3 {
+            color: #F7F7F2;
+        }
+
+        /* Benefit icon circle */
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgba(216, 182, 76, 0.12);
+            color: #D8B64C;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-warm text-teal-900 antialiased overflow-x-hidden">
+
+    <!-- Header mount (injected by header.js) -->
+    <div id="header-mount"></div>
+
+    <main>
+
+        <!-- ============ PAGE HERO ============ -->
+        <section class="relative bg-warm arch-grid pt-12 lg:pt-12 pb-12 lg:pb-12 overflow-hidden">
+
+            <div class="max-w-content mx-auto px-6 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+                <!-- Left: content -->
+                <div class="lg:col-span-6 relative">
+                    <!-- Watermark -->
+                    <div class="absolute -top-8 -left-2 lg:-left-6 pointer-events-none select-none z-0 hidden lg:block">
+                        <div
+                            class="text-[140px] font-black leading-none tracking-tighter text-teal-900/[0.05] tabular-nums">
+                            01
+                        </div>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="vertical-line-teal"></span>
+                            <span class="text-[10px] tracking-ultra text-teal-700 font-bold uppercase">
+                                Product 01 — Lightweight Fill
+                            </span>
+                        </div>
+
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.02] tracking-tight text-teal-900">
+                            EPS<br>
+                            Geofoam<span class="text-gold">.</span>
+                        </h1>
+
+                        <div class="mt-5 flex items-center gap-3">
+                            <span class="w-12 h-0.5 bg-teal-900"></span>
+                            <p class="text-teal-700/70 text-xs tracking-wide-plus uppercase font-bold">
+                                100× lighter than soil. Proven for 30+ years.
+                            </p>
+                        </div>
+
+                        <p class="mt-6 text-teal-700/70 text-base leading-relaxed max-w-lg">
+                            Geofoam is a lightweight, rigid foam plastic used worldwide as a fill material
+                            for more than 30 years. At approximately
+                            <strong class="text-teal-900 font-semibold">100 times lighter than soil</strong>
+                            and 20–30× lighter than other lightweight fill alternatives, it dramatically
+                            reduces loads on underlying soils and enables faster construction without staged work.
+                        </p>
+
+                        <div class="mt-8 flex flex-wrap items-center gap-3">
+                            <a href="/contact.html"
+                                class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-teal-900 text-warm font-bold text-xs tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
+                                Request a Quote
+                                <span
+                                    class="block w-2 h-2 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-1 transition-transform">
+                                </span>
+                            </a>
+
+                            <a href="#specifications"
+                                class="inline-flex items-center justify-center h-12 px-6 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                                View Specifications
+                            </a>
+                        </div>
+
+                        <!-- Inline spec row -->
+                        <div class="mt-10 grid grid-cols-3 gap-6 border-t border-teal-900/10 pt-6 max-w-lg">
+
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">
+                                    100<span class="text-base text-gold ml-0.5">×</span>
+                                </div>
+                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                    Lighter than soil
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">
+                                    30<span class="text-base text-gold ml-0.5">+</span>
+                                </div>
+                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                    Years proven
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">
+                                    100<span class="text-base text-gold ml-0.5">%</span>
+                                </div>
+                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                    Recyclable
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: image -->
+                <div class="lg:col-span-6 relative">
+
+                    <!-- Shift entire image area upward -->
+                    <div class="relative -translate-y-5">
+
+                        <!-- Hairlines -->
+                        <div class="absolute -top-3 left-0 right-10 h-px bg-teal-900/15"></div>
+
+                        <div class="absolute -left-3 top-0 bottom-10 w-px bg-teal-900/15"></div>
+
+                        <!-- Image -->
+                        <div class="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden rounded-sm shadow-xl">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1bKkzExRB5E-8MlEDLfB-IecWZ8LdQDG2BvJIOIo4nQnpZNObwxpYzj8&s=10"
+                                alt="EPS Geofoam blocks" class="w-full h-full object-cover geo-hero-img" />
+
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ WHY GEOFOAM (Benefits) ============ -->
+        <section class="py-12 lg:py-14 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-6">
+
+                <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-10">
+                    <div class="lg:col-span-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="vertical-line-teal"></span>
+                            <span class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Why
+                                Geofoam</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-teal-900 leading-[1.05]">
+                            Engineered for civil infrastructure<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6 lg:pl-8 lg:border-l lg:border-teal-900/10">
+                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-lg">
+                            EPS geofoam can be covered to look like a normal sloped embankment,
+                            finished as a wall, or used as fill to reduce loads on underlying
+                            soils — enabling highways and infrastructure to be built quickly
+                            without staged construction.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefits grid — 6 items, tight layout -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-feather-alt text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Lightweight</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                Minimizes preloading, surcharging and staged construction.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-cloud-sun-rain text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Weather Resistant</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                Withstands freeze–thaw cycles, moisture and road salts.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-shield-alt text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Insect &amp; Mold Resistant</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                Will not sustain mold or mildew. Termite-repellant additive available.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-ruler-combined text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Made to Specification</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                Multiple densities and block sizes available for your project.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-tools text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Ease of Installation</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                Lightweight, no heavy equipment. Cuts easily with hot wire or saw.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-icon-card bg-warm border border-teal-100 rounded-sm p-5 flex gap-4">
+                        <span class="benefit-icon">
+                            <i class="fas fa-leaf text-sm"></i>
+                        </span>
+                        <div>
+                            <h3 class="text-sm font-bold text-teal-900 mb-1">Environmentally Friendly</h3>
+                            <p class="text-xs text-teal-700/60 leading-relaxed">
+                                100% recyclable. No HCFCs or formaldehyde.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============ TECHNICAL SPECIFICATIONS (Dark) ============ -->
+        <section id="specifications" class="py-12 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div class="max-w-content mx-auto px-5 sm:px-6 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+                <!-- Left: intro + spec list -->
+                <div class="lg:col-span-7">
+
+                    <!-- Eyebrow -->
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="vertical-line"></span>
+                        <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Technical
+                            Specifications</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.1] mb-5">
+                        Engineered to your job spec<span class="text-gold">.</span>
+                    </h2>
+
+                    <!-- Intro -->
+                    <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-lg">
+                        Multiple densities and block sizes available. Contact our team for the
+                        full specification sheet including compressive strength, thermal
+                        conductivity and fire performance data.
+                    </p>
+
+                    <!-- Spec table -->
+                    <div class="border-t border-white/10">
+
+                        <!-- Row 1: Material -->
+                        <div class="spec-row">
+                            <span class="spec-label">Material</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">Expanded Polystyrene (EPS)</span>
+                        </div>
+
+                        <!-- Row 2: Unit Weight -->
+                        <div class="spec-row">
+                            <span class="spec-label">Unit Weight</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">≈ 100× lighter than soil</span>
+                        </div>
+
+                        <!-- Row 3: Density Range -->
+                        <div class="spec-row">
+                            <span class="spec-label">Density Range</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">Multiple grades available</span>
+                        </div>
+
+                        <!-- Row 4: Block Sizes -->
+                        <div class="spec-row">
+                            <span class="spec-label">Block Sizes</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">Custom cut to spec</span>
+                        </div>
+
+                        <!-- Row 5: Installation -->
+                        <div class="spec-row">
+                            <span class="spec-label">Installation</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">Hot wire, hand saw, no heavy equipment</span>
+                        </div>
+
+                        <!-- Row 6: Environment -->
+                        <div class="spec-row">
+                            <span class="spec-label">Environment</span>
+                            <span class="spec-dots" aria-hidden="true"></span>
+                            <span class="spec-value">100% recyclable · No HCFCs · No formaldehyde</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right: image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative max-w-md mx-auto lg:max-w-none lg:mx-0">
+                        <div
+                            class="absolute -top-3 -right-3 w-12 h-12 lg:w-16 lg:h-16 border-t-2 border-r-2 border-gold/40">
+                        </div>
+                        <div
+                            class="absolute -bottom-3 -left-3 w-12 h-12 lg:w-16 lg:h-16 border-b-2 border-l-2 border-gold/40">
+                        </div>
+                        <img src="https://rishabhthermocole.com/images/Capture14.png" alt="Geofoam block installation"
+                            class="w-full h-[260px] sm:h-[320px] lg:h-[420px] object-contain rounded-sm shadow-2xl" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============ APPLICATIONS ============ -->
+        <section class="py-16 lg:py-20 bg-warm border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-6">
+
+                <!-- Section header -->
+                <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-10">
+                    <div class="lg:col-span-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="vertical-line-teal"></span>
+                            <span
+                                class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Applications</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-teal-900 leading-[1.05]">
+                            Where geofoam is used<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6 lg:pl-8 lg:border-l lg:border-teal-900/10">
+                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-lg">
+                            From highway embankments and bridge abutments to podium decks and green
+                            roofs — EPS geofoam replaces conventional fill across a wide range of
+                            civil and architectural applications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Application tiles — 12 items, dense grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 lg:gap-3">
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">01</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Road Embankment</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">02</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Road / Parking Lot Insulation
+                        </h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">03</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Foundation Fill &amp; Insulation
+                        </h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">04</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Bridge Abutment Backfill</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">05</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Retaining Wall Backfill</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">06</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Levees / Dikes / Berms</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">07</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Podium</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">08</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Slope Stabilization</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">09</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Landscape Design</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">10</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Plaza Decks</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">11</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Green Roofs</h3>
+                    </a>
+
+                    <a href="/contact.php"
+                        class="app-tile group bg-warm-light border border-teal-100 rounded-sm p-4 flex flex-col justify-between min-h-[110px]">
+                        <span
+                            class="app-tile-num w-7 h-7 flex items-center justify-center rounded-sm border border-teal-900/15 text-[10px] font-extrabold text-teal-900/50 transition-colors">12</span>
+                        <h3 class="text-xs font-bold text-teal-900 leading-tight mt-3">Roof Gardens</h3>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ CTA BAND ============ -->
+        <!-- <section class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div
+                class="max-w-content mx-auto px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div>
+                    <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Ready to specify?</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+                        Talk to our team about your geofoam requirement<span class="text-gold">.</span>
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/contact.php"
+                        class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
+                        Request a Quote
+                        <span
+                            class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                    </a>
+                    <a href="tel:+919158700128"
+                        class="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-white/20 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors whitespace-nowrap">
+                        <i class="fas fa-phone text-xs"></i>
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+
+    <!-- Footer mount (injected by footer.js) -->
+    <div id="footer-mount"></div>
+
+    <!-- Component scripts -->
+    <script src="header/header.js" defer></script>
+    <script src="footer/footer.js" defer></script>
+
+    <!-- Page-specific script (minimal) -->
+    <script>
+        (function () {
+            'use strict';
+
+            // Smooth scroll for internal anchors (e.g., "View Specifications")
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var href = a.getAttribute('href');
+                    if (href.length > 1) {
+                        var target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

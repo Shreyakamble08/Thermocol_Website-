@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rishabh Green BuildTech — Building Better. Building Greener.</title>
+    <meta name="description"
+        content="Advanced EPS-based building solutions for lightweight construction, thermal performance and a more efficient built environment." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50: '#eef5f6', 100: '#d5e6e9', 200: '#aecdd4',
+                            300: '#7dafb9', 400: '#4b8d99', 500: '#2a6f7c',
+                            600: '#1e5864', 700: '#164550', 800: '#0e333c',
+                            900: '#003C47', 950: '#00262e'
+                        },
+                        green: { DEFAULT: '#3a7d5c', light: '#5a9e7a', dark: '#2a5f44' },
+                        gold: { DEFAULT: '#D8B64C', light: '#E5C65A', dark: '#b89a3a' },
+                        red: { DEFAULT: '#B8433A', light: '#d05a50' },
+                        warm: { DEFAULT: '#F7F7F2', light: '#FCFCF9', dark: '#EEEEE7' }
+                    },
+                    letterSpacing: { 'ultra': '0.2em', 'wide-plus': '0.12em' },
+                    maxWidth: { content: '1200px' }
+                }
+            }
+        };
+    </script>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="/header/header.css" />
+    <link rel="stylesheet" href="/footer/footer.css" />
+</head>
+
+<body class="font-sans bg-warm text-teal-900 antialiased">
+
+    <!-- Header mount (injected by header.js) -->
+    <div id="header-mount"></div>
+
+    <main>
+
+        <!-- ============ HERO ============ -->
+
+        <section id="heroSlider" aria-label="Featured solutions" aria-roledescription="carousel"
+            class="relative bg-warm overflow-hidden pt-12 lg:pt-16 pb-6 lg:pb-8">
+
+            <!-- Architectural grid -->
+            <div class="absolute inset-0 arch-grid pointer-events-none" aria-hidden="true"></div>
+
+            <!-- Top metadata row (compact) -->
+            <div
+                class="relative max-w-[1500px] mx-auto px-6 lg:px-10 flex items-center justify-between mb-6 lg:mb-8 text-[9px] tracking-ultra uppercase font-bold text-teal-900/40">
+                <div class="hidden lg:flex items-center gap-4">
+                    <span>Rishabh Thermocole</span>
+                    <span class="w-6 h-px bg-teal-900/20"></span>
+                    <span>Sheet 01 / 04 &nbsp;·&nbsp; Rev A</span>
+                </div>
+                <div class="flex items-center gap-4 lg:hidden">
+                    <span>Sheet <span id="heroCounterMobile">01</span> / 04</span>
+                </div>
+
+            </div>
+
+            <!-- Main grid: content + rail -->
+            <div class="relative max-w-[1500px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+                <!-- LEFT: Slides -->
+                <div class="lg:col-span-9 relative">
+
+                    <!-- Oversized watermark (smaller, tighter) -->
+                    <div class="absolute -top-4 -left-2 lg:-left-8 pointer-events-none select-none z-0">
+                        <div id="heroWatermark"
+                            class="text-[120px] sm:text-[150px] lg:text-[180px] font-black leading-none tracking-tighter text-teal-900/[0.05] tabular-nums">
+                            01
+                        </div>
+                    </div>
+
+                    <!-- Slides container -->
+                    <div class="relative z-10 min-h-[340px] lg:min-h-[360px]">
+
+                        <!-- ============ SLIDE 1 ============ -->
+                        <div class="hero-slide is-active" data-slide="0" role="group" aria-roledescription="slide"
+                            aria-label="1 of 4: EPS Geofoam">
+
+                            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
+
+                                <!-- Text column -->
+                                <div class="lg:col-span-3 flex flex-col justify-between">
+                                    <div>
+                                        <!-- Eyebrow -->
+                                        <div class="flex items-center gap-3 mb-5">
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-gold uppercase">01</span>
+                                            <span class="w-10 h-px bg-gold/60"></span>
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-teal-900/50 uppercase">Lightweight
+                                                Fill</span>
+                                        </div>
+
+                                        <!-- Headline -->
+                                        <h2
+                                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-tight text-teal-900">
+                                            EPS Geofoam<span class="text-gold">.</span>
+                                        </h2>
+
+                                        <!-- Subline -->
+                                        <div class="mt-4 flex items-center gap-3">
+                                            <span class="w-12 h-0.5 bg-teal-900"></span>
+                                            <p class="text-teal-700/70 text-xs tracking-wide-plus uppercase font-bold">
+                                                Lighter ground. Stronger foundations.
+                                            </p>
+                                        </div>
+
+                                        <!-- Description (shorter) -->
+                                        <p class="mt-5 text-teal-700/70 text-sm leading-relaxed max-w-lg">
+                                            Ultra-lightweight engineered fill for embankments and civil infrastructure —
+                                            reducing settlement, speeding up construction.
+                                        </p>
+                                    </div>
+
+                                    <!-- Compact bottom row: specs + CTAs side by side -->
+                                    <div class="mt-6 pt-5 border-t border-teal-900/10">
+                                        <div class="flex flex-wrap items-end gap-x-8 gap-y-4">
+                                            <!-- Specs -->
+                                            <div class="flex items-end gap-6">
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Density</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">98% <span
+                                                            class="text-[10px] font-medium text-teal-700/60">lighter</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Speed</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">10× <span
+                                                            class="text-[10px] font-medium text-teal-700/60">faster</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Proven</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">30+ <span
+                                                            class="text-[10px] font-medium text-teal-700/60">years</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- CTAs -->
+                                            <div class="flex items-center gap-2 ml-auto">
+                                                <a href="/eps-geofoam.php"
+                                                    class="group inline-flex items-center gap-2 h-10 pl-5 pr-4 rounded-sm bg-teal-900 text-warm font-bold text-[10px] tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
+                                                    Explore
+                                                    <span
+                                                        class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-0.5 transition-transform"></span>
+                                                </a>
+                                                <a href="/contact.php"
+                                                    class="inline-flex items-center justify-center h-10 px-5 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-[10px] tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                                                    Quote
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image column -->
+                                <div class="lg:col-span-2 relative">
+                                    <div class="relative h-full min-h-[280px] lg:min-h-0">
+                                        <div class="absolute -top-2 left-0 right-6 h-px bg-teal-900/15"></div>
+                                        <div class="absolute -left-2 top-0 bottom-6 w-px bg-teal-900/15"></div>
+                                        <div class="absolute inset-0 lg:inset-3 overflow-hidden rounded-sm shadow-lg">
+                                            <img src="https://formainsulation.com/wp-content/uploads/2024/05/Geo-Foam-2a.jpeg"
+                                                alt="EPS Geofoam blocks"
+                                                class="w-full h-full object-cover hero-bg-img" />
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============ SLIDE 2 ============ -->
+                        <div class="hero-slide" data-slide="1" role="group" aria-roledescription="slide"
+                            aria-label="2 of 4: EIFS">
+
+                            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
+
+                                <div class="lg:col-span-3 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-5">
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-gold uppercase">02</span>
+                                            <span class="w-10 h-px bg-gold/60"></span>
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-teal-900/50 uppercase">Facade
+                                                Systems</span>
+                                        </div>
+
+                                        <h2
+                                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-tight text-teal-900">
+                                            Exterior Insulation<span class="text-gold">.</span>
+                                        </h2>
+
+                                        <div class="mt-4 flex items-center gap-3">
+                                            <span class="w-12 h-0.5 bg-teal-900"></span>
+                                            <p class="text-teal-700/70 text-xs tracking-wide-plus uppercase font-bold">
+                                                A thermal envelope that lasts.
+                                            </p>
+                                        </div>
+
+                                        <p class="mt-5 text-teal-700/70 text-sm leading-relaxed max-w-lg">
+                                            Complete EIFS solutions that improve thermal performance and deliver a
+                                            durable, weather-resistant exterior finish.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-6 pt-5 border-t border-teal-900/10">
+                                        <div class="flex flex-wrap items-end gap-x-8 gap-y-4">
+                                            <div class="flex items-end gap-6">
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Energy</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">40% <span
+                                                            class="text-[10px] font-medium text-teal-700/60">saved</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Life</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">25 <span
+                                                            class="text-[10px] font-medium text-teal-700/60">years</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Rating</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">A+ <span
+                                                            class="text-[10px] font-medium text-teal-700/60">thermal</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2 ml-auto">
+                                                <a href="/eifs.php"
+                                                    class="group inline-flex items-center gap-2 h-10 pl-5 pr-4 rounded-sm bg-teal-900 text-warm font-bold text-[10px] tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
+                                                    Explore
+                                                    <span
+                                                        class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-0.5 transition-transform"></span>
+                                                </a>
+                                                <a href="/contact.php"
+                                                    class="inline-flex items-center justify-center h-10 px-5 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-[10px] tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                                                    Talk
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-2 relative">
+                                    <div class="relative h-full min-h-[280px] lg:min-h-0">
+                                        <div class="absolute -top-2 left-0 right-6 h-px bg-teal-900/15"></div>
+                                        <div class="absolute -left-2 top-0 bottom-6 w-px bg-teal-900/15"></div>
+                                        <div class="absolute inset-0 lg:inset-3 overflow-hidden rounded-sm shadow-lg">
+                                            <img src="https://dynamicmedia.sika.com/adobe/assets/urn:aaid:aem:e06e6a76-ada8-4553-8e37-8c01ad82cfe6/as/glo-sika-light-steel-frame-facade-eifs-buildup-01951251.png?width=1920&height=1920"
+                                                alt="EIFS facade" class="w-full h-full object-cover hero-bg-img" />
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============ SLIDE 3 ============ -->
+                        <div class="hero-slide" data-slide="2" role="group" aria-roledescription="slide"
+                            aria-label="3 of 4: EPS 3D Panel">
+
+                            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
+
+                                <div class="lg:col-span-3 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-5">
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-gold uppercase">03</span>
+                                            <span class="w-10 h-px bg-gold/60"></span>
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-teal-900/50 uppercase">Modular
+                                                Construction</span>
+                                        </div>
+
+                                        <h2
+                                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-tight text-teal-900">
+                                            EPS 3D Panel<span class="text-gold">.</span>
+                                        </h2>
+
+                                        <div class="mt-4 flex items-center gap-3">
+                                            <span class="w-12 h-0.5 bg-teal-900"></span>
+                                            <p class="text-teal-700/70 text-xs tracking-wide-plus uppercase font-bold">
+                                                Structure + insulation. One unit.
+                                            </p>
+                                        </div>
+
+                                        <p class="mt-5 text-teal-700/70 text-sm leading-relaxed max-w-lg">
+                                            Pre-engineered 3D panel systems for walls, slabs and roofs — combining
+                                            structure and insulation in one modular unit.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-6 pt-5 border-t border-teal-900/10">
+                                        <div class="flex flex-wrap items-end gap-x-8 gap-y-4">
+                                            <div class="flex items-end gap-6">
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Speed</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">3× <span
+                                                            class="text-[10px] font-medium text-teal-700/60">faster</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Labour</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">60% <span
+                                                            class="text-[10px] font-medium text-teal-700/60">less</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Value</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">R-30
+                                                        <span
+                                                            class="text-[10px] font-medium text-teal-700/60">insul.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2 ml-auto">
+                                                <a href="/eps-3d-panel.php"
+                                                    class="group inline-flex items-center gap-2 h-10 pl-5 pr-4 rounded-sm bg-teal-900 text-warm font-bold text-[10px] tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
+                                                    Explore
+                                                    <span
+                                                        class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-0.5 transition-transform"></span>
+                                                </a>
+                                                <a href="/contact.php"
+                                                    class="inline-flex items-center justify-center h-10 px-5 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-[10px] tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                                                    Demo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-2 relative">
+                                    <div class="relative h-full min-h-[280px] lg:min-h-0">
+                                        <div class="absolute -top-2 left-0 right-6 h-px bg-teal-900/15"></div>
+                                        <div class="absolute -left-2 top-0 bottom-6 w-px bg-teal-900/15"></div>
+                                        <div class="absolute inset-0 lg:inset-3 overflow-hidden rounded-sm shadow-lg">
+                                            <img src="https://rishabhthermocole.com/images/polistop.png"
+                                                alt="EPS 3D panel" class="w-full h-full object-cover hero-bg-img" />
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ============ SLIDE 4 ============ -->
+                        <div class="hero-slide" data-slide="3" role="group" aria-roledescription="slide"
+                            aria-label="4 of 4: Facade Profile">
+
+                            <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
+
+                                <div class="lg:col-span-3 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-5">
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-gold uppercase">04</span>
+                                            <span class="w-10 h-px bg-gold/60"></span>
+                                            <span
+                                                class="text-[10px] tracking-ultra font-bold text-teal-900/50 uppercase">Architectural
+                                                Profiles</span>
+                                        </div>
+
+                                        <h2
+                                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-tight text-teal-900">
+                                            Facade Profile<span class="text-gold">.</span>
+                                        </h2>
+
+                                        <div class="mt-4 flex items-center gap-3">
+                                            <span class="w-12 h-0.5 bg-teal-900"></span>
+                                            <p class="text-teal-700/70 text-xs tracking-wide-plus uppercase font-bold">
+                                                Architectural detailing, without the weight.
+                                            </p>
+                                        </div>
+
+                                        <p class="mt-5 text-teal-700/70 text-sm leading-relaxed max-w-lg">
+                                            Precision-moulded EPS profiles for cornices, mouldings and decorative
+                                            elements — lightweight and easy to install.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-6 pt-5 border-t border-teal-900/10">
+                                        <div class="flex flex-wrap items-end gap-x-8 gap-y-4">
+                                            <div class="flex items-end gap-6">
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Designs</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">500+
+                                                        <span
+                                                            class="text-[10px] font-medium text-teal-700/60">profiles</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Custom</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">100%
+                                                        <span
+                                                            class="text-[10px] font-medium text-teal-700/60">moulded</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">
+                                                        Weight</div>
+                                                    <div class="text-base font-extrabold text-teal-900 mt-0.5">0.5 <span
+                                                            class="text-[10px] font-medium text-teal-700/60">kg/m</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2 ml-auto">
+                                                <a href="/facade-profile.php"
+                                                    class="group inline-flex items-center gap-2 h-10 pl-5 pr-4 rounded-sm bg-teal-900 text-warm font-bold text-[10px] tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
+                                                    Explore
+                                                    <span
+                                                        class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-0.5 transition-transform"></span>
+                                                </a>
+                                                <a href="/contact.php"
+                                                    class="inline-flex items-center justify-center h-10 px-5 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-[10px] tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                                                    Catalogue
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-2 relative">
+                                    <div class="relative h-full min-h-[280px] lg:min-h-0">
+                                        <div class="absolute -top-2 left-0 right-6 h-px bg-teal-900/15"></div>
+                                        <div class="absolute -left-2 top-0 bottom-6 w-px bg-teal-900/15"></div>
+                                        <div class="absolute inset-0 lg:inset-3 overflow-hidden rounded-sm shadow-lg">
+                                            <img src="https://i.pinimg.com/564x/72/fc/dc/72fcdcc6b4078681ddec65b2623523be.jpg"
+                                                alt="Facade profile" class="w-full h-full object-cover hero-bg-img" />
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile dots — visible below lg -->
+                <div class="lg:hidden flex items-center justify-center gap-2 mt-6" role="tablist"
+                    aria-label="Slide navigation">
+                    <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" data-dot="0"
+                        aria-label="Go to slide 1"></button>
+                    <button type="button" class="hero-dot" role="tab" aria-selected="false" data-dot="1"
+                        aria-label="Go to slide 2"></button>
+                    <button type="button" class="hero-dot" role="tab" aria-selected="false" data-dot="2"
+                        aria-label="Go to slide 3"></button>
+                    <button type="button" class="hero-dot" role="tab" aria-selected="false" data-dot="3"
+                        aria-label="Go to slide 4"></button>
+                </div>
+
+                <!-- ============ RIGHT: Compact slide rail ============ -->
+                <aside class="lg:col-span-3 hidden lg:flex flex-col border-l border-teal-900/10 pl-6"
+                    aria-label="Slide navigator">
+
+                    <div class="mb-3 flex items-center justify-between">
+                        <span class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold">Slide Index</span>
+                        <span class="text-[9px] tracking-ultra uppercase text-teal-900/30">04 Sheets</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col gap-2" role="tablist">
+
+                        <!-- Rail 1 -->
+                        <button type="button" class="hero-rail is-active" role="tab" aria-selected="true" data-dot="0">
+                            <div class="flex items-center gap-3">
+                                <span class="hero-rail-num">01</span>
+                                <div class="flex-1 text-left min-w-0">
+                                    <div class="hero-rail-label">EPS Geofoam</div>
+                                    <div class="hero-rail-sub">Lightweight Fill</div>
+                                </div>
+                                <span class="hero-rail-bar"></span>
+                            </div>
+                        </button>
+
+                        <!-- Rail 2 -->
+                        <button type="button" class="hero-rail" role="tab" aria-selected="false" data-dot="1">
+                            <div class="flex items-center gap-3">
+                                <span class="hero-rail-num">02</span>
+                                <div class="flex-1 text-left min-w-0">
+                                    <div class="hero-rail-label">EIFS</div>
+                                    <div class="hero-rail-sub">Facade Systems</div>
+                                </div>
+                                <span class="hero-rail-bar"></span>
+                            </div>
+                        </button>
+
+                        <!-- Rail 3 -->
+                        <button type="button" class="hero-rail" role="tab" aria-selected="false" data-dot="2">
+                            <div class="flex items-center gap-3">
+                                <span class="hero-rail-num">03</span>
+                                <div class="flex-1 text-left min-w-0">
+                                    <div class="hero-rail-label">EPS 3D Panel</div>
+                                    <div class="hero-rail-sub">Modular Build</div>
+                                </div>
+                                <span class="hero-rail-bar"></span>
+                            </div>
+                        </button>
+
+                        <!-- Rail 4 -->
+                        <button type="button" class="hero-rail" role="tab" aria-selected="false" data-dot="3">
+                            <div class="flex items-center gap-3">
+                                <span class="hero-rail-num">04</span>
+                                <div class="flex-1 text-left min-w-0">
+                                    <div class="hero-rail-label">Facade Profile</div>
+                                    <div class="hero-rail-sub">Architectural</div>
+                                </div>
+                                <span class="hero-rail-bar"></span>
+                            </div>
+                        </button>
+
+                    </div>
+
+                    <!-- Bottom CTA -->
+                    <div class="mt-5 pt-4 border-t border-teal-900/10">
+                        <a href="/contact.php"
+                            class="block text-[10px] tracking-ultra uppercase font-bold text-teal-900/50 hover:text-gold transition-colors">
+                            Request Custom Specification →
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ============ INTRODUCTION ============ -->
+        <section class="py-12 bg-warm-light">
+            <div class="max-w-content mx-auto px-6">
+
+                <!-- Top: eyebrow + headline + intro (same layout) -->
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="vertical-line"></span>
+                            <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Who We Are</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-teal-900 leading-tight">
+                            A leading manufacturer of Expanded Polystyrene in Maharashtra.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <p class="text-teal-700/70 leading-relaxed">
+                            Operating since 2016, Rishabh Thermocole Arts has been catering to the EPS
+                            packaging and insulation needs of clients across multiple sectors. Our
+                            manufacturing facility at MIDC Talegaon, Dabhade operates with an installed
+                            capacity of <strong class="text-teal-900 font-semibold">360 tonnes per annum</strong>.
+                        </p>
+                        <div class="mt-6 w-12 h-0.5 bg-gold"></div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="mt-8 pt-8 border-t border-teal-900/10">
+
+                    <!-- Middle: Vision + Philosophy (2 col) -->
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+                        <!-- Vision -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-[10px] tracking-ultra text-teal-900/40 font-bold uppercase">01</span>
+                                <span class="w-8 h-px bg-gold/60"></span>
+                                <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Vision</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-teal-900 leading-tight mb-5">
+                                A multi-product insulation &amp; packaging conglomerate.
+                            </h3>
+                            <p class="text-teal-700/70 leading-relaxed">
+                                To build a multi-product insulation and packaging conglomerate with a
+                                relentless focus on quality and sustainability delivering dependable
+                                EPS solutions that support modern construction, industry and everyday life.
+                            </p>
+                        </div>
+
+                        <!-- Philosophy -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-[10px] tracking-ultra text-teal-900/40 font-bold uppercase">02</span>
+                                <span class="w-8 h-px bg-gold/60"></span>
+                                <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Philosophy</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-teal-900 leading-tight mb-5">
+                                Highest quality work that meets your expectations.
+                            </h3>
+                            <p class="text-teal-700/70 leading-relaxed">
+                                Quality comes with integrity — using the right density, the right
+                                preparation and cooling times, and the right processes. Our in-house
+                                team pays detailed attention at every stage, and our vendor relationships
+                                form a critical part of our value chain.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="mt-6 pt-6 border-t border-teal-900/10">
+
+                        <!-- Bottom: Infrastructure (3 col: heading + stats + machinery) -->
+                        <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+                            <!-- Left column: heading + description -->
+                            <div class="lg:col-span-5">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span
+                                        class="text-[10px] tracking-ultra text-teal-900/40 font-bold uppercase">03</span>
+                                    <span class="w-8 h-px bg-gold/60"></span>
+                                    <span
+                                        class="text-[10px] tracking-ultra text-gold font-bold uppercase">Infrastructure</span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-teal-900 leading-tight mb-5">
+                                    Engineered at our MIDC Talegaon facility.
+                                </h3>
+                                <p class="text-teal-700/70 leading-relaxed">
+                                    Our existing plant at Talegaon, Pune spans a total area of
+                                    <strong class="text-teal-900 font-semibold">10,500 sq ft</strong> and
+                                    is equipped with a complete EPS production line — from raw bead
+                                    handling to precision CNC cutting and hand fabrication.
+                                </p>
+
+                                <!-- Stat row -->
+                                <div class="mt-8 grid grid-cols-3 gap-6 border-t border-teal-900/10 pt-4">
+                                    <div>
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">2016</div>
+                                        <div
+                                            class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                            Established</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">360<span
+                                                class="text-base font-bold text-gold ml-0.5">T</span></div>
+                                        <div
+                                            class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                            Per Annum</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">10.5<span
+                                                class="text-base font-bold text-gold ml-0.5">K</span></div>
+                                        <div
+                                            class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">
+                                            Sq Ft Plant</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right column: machinery list (2 col grid of items) -->
+                            <div class="lg:col-span-7">
+                                <div class="text-[10px] tracking-ultra uppercase text-teal-900/40 font-bold mb-5">
+                                    Machinery &amp; Equipment
+                                </div>
+
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Boiler
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Compressor
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Batch-type pre-foaming machine
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Continuous pre-foaming machine
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Block moulding machine (2020 × 1020 × 635 mm)
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Automatic shape moulding machine (1400 × 1200 mm)
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Shape moulding machine (1400 × 1600 mm)
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Shape cutting machines
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Thermocole CNC cutting machine
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Thermocole melting machine
+                                    </li>
+                                    <li class="flex items-start gap-3 text-sm text-teal-700/80">
+                                        <span class="mt-2 w-1.5 h-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                        Hand fabrication unit
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============ SOLUTIONS ============ -->
+
+        <section id="solutions" class="py-12 lg:py-18 bg-warm">
+            <div class="max-w-content mx-auto px-6">
+
+                <!-- Section header: 2-column, no wasted whitespace -->
+                <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-10 lg:mb-12">
+                    <div class="lg:col-span-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="vertical-line-teal"></span>
+                            <span class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Our
+                                Products</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-teal-900 leading-[1.05]">
+                            Engineered EPS Solutions<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6 lg:pl-8 lg:border-l lg:border-teal-900/10">
+                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-lg">
+                            A complete EPS product range from lightweight geofoam fill and thermal facade systems
+                            to precision-moulded architectural profiles and industrial packaging.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Product grid — tight, editorial -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+
+                    <!-- ============ 01 — EPS Geofoam ============ -->
+                    <a href="/eps-geofoam.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <!-- Image with number tab -->
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://snowpackpolymers.com/images/geofoam-foundations.jpg" alt="EPS Geofoam"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <!-- Corner tab -->
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                01
+                            </div>
+                            <!-- Hover arrow (slides in) -->
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+
+                        <!-- Content — tight -->
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    EPS Geofoam
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Fill
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Ultra-lightweight engineered fill for embankments and civil infrastructure reducing
+                                settlement and speeding up construction.
+                            </p>
+                        </div>
+
+                        <!-- Bottom gold rule (animates on hover) -->
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ============ 02 — EIFS ============ -->
+                    <a href="/eifs.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://cdn.open-pr.com/L/5/L521496071_g.jpg" alt="EIFS"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                02
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    Exterior Insulation &amp; Finishing System
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Facade
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Complete EIFS solutions that improve thermal performance and deliver a durable,
+                                weather-resistant exterior finish.
+                            </p>
+                        </div>
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ============ 03 — EPS 3D Panel ============ -->
+                    <a href="/eps-3d-panel.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://www.hikaeequs.com/wp-content/uploads/2023/07/landing-panel-01.png"
+                                alt="EPS 3D Panel"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                03
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    EPS 3D Panel
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Modular
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Pre-engineered 3D panel systems for walls, slabs and roofs combining structure and
+                                insulation in one modular unit.
+                            </p>
+                        </div>
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ============ 04 — Facade Profile ============ -->
+                    <a href="/facade-profile.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://bendu-onlineshop.de/c/26-category_default/fensterfaschen.jpg"
+                                alt="Facade Profile"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                04
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    Facade Profile
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Arch.
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Precision-moulded EPS architectural profiles for cornices, mouldings and decorative
+                                elements lightweight and easy to install.
+                            </p>
+                        </div>
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ============ 05 — Industrial Packaging ============ -->
+                    <a href="/industrial-packaging.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://4.imimg.com/data4/VV/GA/MY-11954206/polystyrene-packing-blocks-500x500.jpg"
+                                alt="Industrial Packaging"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                05
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    Industrial Packaging
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Pack.
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Customised industrial packaging and insulation boxes engineered for protective
+                                transport of sensitive goods.
+                            </p>
+                        </div>
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ============ 06 — EPS Recycling ============ -->
+                    <a href="/eps-recycling.php"
+                        class="group product-card bg-warm border border-teal-100 rounded-sm overflow-hidden block">
+                        <div class="relative h-40 lg:h-44 bg-teal-50 overflow-hidden">
+                            <img src="https://www.intcorecycling.com/pics/eps-recycling-circle_150724.jpg"
+                                alt="EPS Recycling"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div
+                                class="absolute top-0 left-0 bg-teal-900 text-warm text-[10px] font-extrabold tracking-ultra px-2.5 py-1.5">
+                                06
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-warm/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-teal-900 rotate-45"></span>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:p-5">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-base font-extrabold text-teal-900 leading-tight">
+                                    EPS Recycling
+                                </h3>
+                                <span
+                                    class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/30 pt-0.5 whitespace-nowrap">
+                                    Green
+                                </span>
+                            </div>
+                            <p class="text-xs text-teal-700/60 leading-relaxed line-clamp-2">
+                                Material recovery and recycling programs — helping reduce waste and keep EPS out of
+                                landfills.
+                            </p>
+                        </div>
+                        <div class="h-px bg-teal-900/10 relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Bottom strip — inline, minimal -->
+                <div
+                    class="mt-10 pt-6 border-t border-teal-900/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-[10px] tracking-ultra text-teal-900/40 font-bold uppercase">Need something
+                            custom?</span>
+                        <span class="text-sm text-teal-900 font-semibold">We engineer to your spec.</span>
+                    </div>
+                    <a href="/contact.php"
+                        class="group inline-flex items-center gap-2 text-[11px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors">
+                        Request a Quote
+                        <span
+                            class="block w-2 h-2 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ FEATURED SYSTEM ============ -->
+        <section class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div class="max-w-content mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+
+                <!-- Left: content -->
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="vertical-line"></span>
+                        <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">BuildTech Systems</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.1] mb-6">
+                        Lightweight by Design.<br />
+                        <span class="text-gold">Strong by Purpose.</span>
+                    </h2>
+
+                    <!-- Feature list — tight rows -->
+                    <div class="divide-y divide-white/10">
+                        <div class="flex items-start gap-4 py-3">
+                            <span class="text-gold text-base font-extrabold w-6 pt-0.5 flex-shrink-0">01</span>
+                            <div>
+                                <h4 class="font-bold text-xs tracking-wide-plus uppercase">Lightweight</h4>
+                                <p class="text-white/50 text-[11px] mt-0.5 leading-relaxed">Reduced structural load and
+                                    efficient handling.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 py-3">
+                            <span class="text-gold text-base font-extrabold w-6 pt-0.5 flex-shrink-0">02</span>
+                            <div>
+                                <h4 class="font-bold text-xs tracking-wide-plus uppercase">Thermally Efficient</h4>
+                                <p class="text-white/50 text-[11px] mt-0.5 leading-relaxed">Designed for improved
+                                    building performance.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 py-3">
+                            <span class="text-gold text-base font-extrabold w-6 pt-0.5 flex-shrink-0">03</span>
+                            <div>
+                                <h4 class="font-bold text-xs tracking-wide-plus uppercase">Engineered Precision</h4>
+                                <p class="text-white/50 text-[11px] mt-0.5 leading-relaxed">Controlled dimensions and
+                                    consistent quality.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 py-3">
+                            <span class="text-gold text-base font-extrabold w-6 pt-0.5 flex-shrink-0">04</span>
+                            <div>
+                                <h4 class="font-bold text-xs tracking-wide-plus uppercase">Construction Efficiency</h4>
+                                <p class="text-white/50 text-[11px] mt-0.5 leading-relaxed">Designed for faster, smarter
+                                    installation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: image -->
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1976&auto=format&fit=crop"
+                        alt="EPS Building System"
+                        class="w-full h-[340px] lg:h-[380px] object-cover rounded-sm shadow-2xl" />
+                    <div class="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-gold/50"></div>
+                    <div class="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-gold/30"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ FINAL CTA ============ -->
+        <!-- <section id="contact" class="relative py-32 bg-teal-900 text-warm arch-grid-dark overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute top-20 left-10 w-64 h-64 border border-gold/30 rounded-sm"></div>
+                <div class="absolute bottom-20 right-10 w-80 h-80 border border-gold/20 rounded-sm"></div>
+                <div class="absolute top-1/2 left-1/3 w-0.5 h-32 bg-gold/20"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
+                    Let's Build Something Better.
+                </h2>
+                <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">
+                    Have a project, product requirement or construction challenge? Talk to our team.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#"
+                        class="inline-flex items-center justify-center h-14 px-10 rounded-sm bg-gold text-teal-900 font-bold text-sm tracking-wide-plus uppercase hover:bg-gold-light transition-colors shadow-lg shadow-gold/20">
+                        Request a Quote
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center justify-center h-14 px-10 rounded-sm border border-white/20 text-warm font-semibold text-sm tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+
+    <!-- Footer mount (injected by footer.js) -->
+    <div id="footer-mount"></div>
+
+    <!-- Component scripts -->
+    <script src="/header/header.js" defer></script>
+    <script src="/footer/footer.js" defer></script>
+    <script src="/script.js" defer></script>
+</body>
+
+</html>
