@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Gallery — Rishabh Thermocole</title>
+    <meta name="description"
+        content="Browse our gallery of EPS products and applications — geofoam, EIFS, 3D panels, facade profiles, industrial packaging, recycling and factory facilities." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50: '#eef5f6', 100: '#d5e6e9', 200: '#aecdd4',
+                            300: '#7dafb9', 400: '#4b8d99', 500: '#2a6f7c',
+                            600: '#1e5864', 700: '#164550', 800: '#0e333c',
+                            900: '#003C47', 950: '#00262e'
+                        },
+                        green: { DEFAULT: '#3a7d5c', light: '#5a9e7a', dark: '#2a5f44' },
+                        gold: { DEFAULT: '#D8B64C', light: '#E5C65A', dark: '#b89a3a' },
+                        red: { DEFAULT: '#B8433A', light: '#d05a50' },
+                        warm: { DEFAULT: '#F7F7F2', light: '#FCFCF9', dark: '#EEEEE7' }
+                    },
+                    letterSpacing: { 'ultra': '0.2em', 'wide-plus': '0.12em' },
+                    maxWidth: { content: '1200px' }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header/header.css" />
+    <link rel="stylesheet" href="footer/footer.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+        /* ========================================================
+           GALLERY PAGE — Responsive masonry + lightbox
+           ======================================================== */
+
+        /* ---------- Filter tabs (mobile: horizontal scroll) ---------- */
+        .gallery-tabs-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-tabs-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(to left, #F7F7F2, transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .gallery-tabs-wrap::after { opacity: 1; }
+        }
+
+        .gallery-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            padding-bottom: 4px;
+        }
+
+        @media (max-width: 767px) {
+            .gallery-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-right: 32px;
+            }
+            .gallery-tabs::-webkit-scrollbar { display: none; }
+        }
+
+        .gallery-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 40px;
+            height: 40px;
+            padding: 0 14px;
+            border: 1px solid rgba(0, 60, 71, 0.12);
+            background: transparent;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(0, 60, 71, 0.6);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            white-space: nowrap;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-tab {
+                height: 38px;
+                min-height: 38px;
+                padding: 0 16px;
+            }
+        }
+
+        .gallery-tab:hover {
+            border-color: rgba(216, 182, 76, 0.5);
+            color: #003C47;
+        }
+
+        .gallery-tab:active {
+            background: rgba(216, 182, 76, 0.1);
+        }
+
+        .gallery-tab.is-active {
+            background: #003C47;
+            border-color: #003C47;
+            color: #F7F7F2;
+        }
+
+        .gallery-tab-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 16px;
+            padding: 0 5px;
+            font-size: 9px;
+            border-radius: 2px;
+            background: rgba(0, 60, 71, 0.08);
+            color: rgba(0, 60, 71, 0.5);
+            transition: all 0.25s ease;
+        }
+
+        .gallery-tab.is-active .gallery-tab-count {
+            background: rgba(216, 182, 76, 0.2);
+            color: #D8B64C;
+        }
+
+        /* ---------- Masonry (CSS columns) ---------- */
+        .gallery-masonry {
+            column-count: 1;
+            column-gap: 10px;
+        }
+
+        @media (min-width: 480px) {
+            .gallery-masonry { column-count: 2; column-gap: 12px; }
+        }
+
+        @media (min-width: 768px) {
+            .gallery-masonry { column-gap: 14px; }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-masonry { column-count: 3; column-gap: 16px; }
+        }
+
+        @media (min-width: 1280px) {
+            .gallery-masonry { column-count: 4; column-gap: 16px; }
+        }
+
+        /* ---------- Gallery item ---------- */
+        .gallery-item {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #003C47;
+            margin-bottom: 10px;
+            break-inside: avoid;
+            cursor: zoom-in;
+            transition:
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+            /* Reserve aspect ratio to prevent layout shift */
+            aspect-ratio: 4 / 3;
+        }
+
+        @media (min-width: 480px) {
+            .gallery-item { margin-bottom: 12px; }
+        }
+
+        @media (min-width: 768px) {
+            .gallery-item { margin-bottom: 14px; }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-item { margin-bottom: 16px; }
+        }
+
+        /* Vary heights for masonry feel (desktop only) */
+        @media (min-width: 480px) {
+            .gallery-item:nth-child(3n + 1) { aspect-ratio: 4 / 3; }
+            .gallery-item:nth-child(3n + 2) { aspect-ratio: 3 / 4; }
+            .gallery-item:nth-child(3n + 3) { aspect-ratio: 1 / 1; }
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -18px rgba(0, 60, 71, 0.35);
+            z-index: 2;
+        }
+
+        .gallery-item:active {
+            transform: scale(0.985);
+        }
+
+        .gallery-item.is-hidden {
+            display: none;
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Overlay */
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                rgba(0, 60, 71, 0.9) 0%,
+                rgba(0, 60, 71, 0.3) 40%,
+                transparent 65%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* On touch devices, show captions persistently */
+        @media (hover: none) {
+            .gallery-item-overlay { opacity: 1; }
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        /* Content */
+        .gallery-item-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 14px;
+            color: #F7F7F2;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @media (min-width: 640px) {
+            .gallery-item-content {
+                padding: 20px;
+                transform: translateY(10px);
+            }
+        }
+
+        @media (hover: none) {
+            .gallery-item-content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-item:hover .gallery-item-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Category chip */
+        .gallery-item-chip {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(247, 247, 242, 0.95);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(0, 60, 71, 0.08);
+            border-radius: 2px;
+            padding: 4px 8px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(0, 60, 71, 0.6);
+            transition: all 0.25s ease;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-item-chip {
+                top: 12px;
+                left: 12px;
+                padding: 5px 9px;
+            }
+        }
+
+        .gallery-item:hover .gallery-item-chip {
+            background: #D8B64C;
+            color: #003C47;
+            border-color: #D8B64C;
+        }
+
+        /* Expand icon */
+        .gallery-item-expand {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(247, 247, 242, 0.95);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 2px;
+            color: #003C47;
+            font-size: 11px;
+            opacity: 0;
+            transform: scale(0.85);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @media (min-width: 640px) {
+            .gallery-item-expand {
+                top: 12px;
+                right: 12px;
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+        }
+
+        @media (hover: none) {
+            .gallery-item-expand {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-item:hover .gallery-item-expand {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Empty state */
+        .gallery-empty {
+            display: none;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .gallery-empty.is-visible {
+            display: block;
+        }
+
+        /* ========================================================
+           LIGHTBOX — mobile-first responsive
+           ======================================================== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 20, 26, 0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            padding-top: calc(12px + env(safe-area-inset-top));
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            padding-left: calc(12px + env(safe-area-inset-left));
+            padding-right: calc(12px + env(safe-area-inset-right));
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        @media (min-width: 640px) {
+            .lightbox { padding: 24px; }
+        }
+
+        .lightbox.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-frame {
+            position: relative;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transform: scale(0.96);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @media (min-width: 640px) {
+            .lightbox-frame { gap: 12px; }
+        }
+
+        .lightbox.is-open .lightbox-frame {
+            transform: scale(1);
+        }
+
+        .lightbox-img-wrap {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .lightbox-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 2px;
+            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+            display: block;
+        }
+
+        /* On very short viewports (landscape phone), constrain image */
+        @media (max-height: 500px) {
+            .lightbox-img-wrap img { max-height: 60vh; }
+        }
+
+        /* Meta bar */
+        .lightbox-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            color: #F7F7F2;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .lightbox-meta {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                padding: 12px 18px;
+            }
+        }
+
+        .lightbox-title {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        @media (min-width: 640px) {
+            .lightbox-title { font-size: 14px; }
+        }
+
+        .lightbox-caption {
+            font-size: 10px;
+            color: rgba(247, 247, 242, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .lightbox-counter {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: rgba(247, 247, 242, 0.5);
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+      /* Close button — top-right of the lightbox frame, always visible */
+.lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7F7F2;
+    border: 0;
+    border-radius: 50%;
+    color: #003C47;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+}
+
+@media (min-width: 640px) {
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+    }
+}
+
+.lightbox-close:hover {
+    background: #D8B64C;
+    color: #003C47;
+    transform: scale(1.08);
+}
+
+.lightbox-close:active {
+    transform: scale(0.94);
+}
+
+        /* Nav buttons */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: #F7F7F2;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 5;
+        }
+
+        @media (min-width: 640px) {
+            .lightbox-nav {
+                width: 48px;
+                height: 48px;
+                font-size: 16px;
+            }
+        }
+
+        .lightbox-nav:hover {
+            background: #D8B64C;
+            color: #003C47;
+            border-color: #D8B64C;
+        }
+
+        .lightbox-nav:active {
+            transform: translateY(-50%) scale(0.94);
+        }
+
+        /* Position nav buttons INSIDE the image area on mobile */
+        .lightbox-prev { left: 6px; }
+        .lightbox-next { right: 6px; }
+
+        @media (min-width: 1024px) {
+            .lightbox-prev { left: -68px; }
+            .lightbox-next { right: -68px; }
+        }
+
+        /* Body lock when lightbox open (preserve scroll position) */
+        body.lightbox-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* ---------- Reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-item,
+            .gallery-item img,
+            .gallery-item-content,
+            .gallery-item-overlay,
+            .gallery-item-expand,
+            .lightbox,
+            .lightbox-frame {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-warm text-teal-900 antialiased overflow-x-hidden">
+
+    <!-- Header mount -->
+    <div id="header-mount"></div>
+
+    <main>
+
+        <!-- ============ PAGE HERO ============ -->
+        <section class="relative bg-warm arch-grid pt-10 sm:pt-12 lg:pt-14 pb-6 sm:pb-8 lg:pb-10 overflow-hidden">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <!-- Header block -->
+                <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-end mb-6 sm:mb-8 lg:mb-10">
+                    <div class="lg:col-span-7 relative">
+                        <!-- Watermark — hidden on very small screens -->
+                        <div class="absolute -top-6 -left-2 lg:-left-4 pointer-events-none select-none z-0 hidden md:block">
+                            <div class="text-[100px] lg:text-[120px] font-black leading-none tracking-tighter text-teal-900/[0.05] tabular-nums">G</div>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-3 sm:mb-4">
+                                <span class="vertical-line-teal"></span>
+                                <span class="text-[10px] tracking-ultra text-teal-700 font-bold uppercase">Our Gallery</span>
+                            </div>
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight text-teal-900">
+                                A visual record of<br>
+                                <span class="text-gold">engineered EPS.</span>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 lg:pl-8 lg:border-l lg:border-teal-900/10">
+                        <p class="text-teal-700/70 text-sm sm:text-base leading-relaxed">
+                            From factory floor to finished application — browse our products,
+                            installations, and manufacturing facility. Click any image to view larger.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Filter tabs -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
+
+                    <div class="gallery-tabs-wrap flex-1 min-w-0">
+                        <div class="gallery-tabs" role="tablist" aria-label="Gallery filters">
+                            <button type="button" class="gallery-tab is-active" data-filter="all" role="tab" aria-selected="true">
+                                All
+                                <span class="gallery-tab-count" data-count-for="all">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="geofoam" role="tab" aria-selected="false">
+                                Geofoam
+                                <span class="gallery-tab-count" data-count-for="geofoam">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="eifs" role="tab" aria-selected="false">
+                                EIFS
+                                <span class="gallery-tab-count" data-count-for="eifs">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="panels" role="tab" aria-selected="false">
+                                3D Panels
+                                <span class="gallery-tab-count" data-count-for="panels">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="facade" role="tab" aria-selected="false">
+                                Facade
+                                <span class="gallery-tab-count" data-count-for="facade">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="packaging" role="tab" aria-selected="false">
+                                Packaging
+                                <span class="gallery-tab-count" data-count-for="packaging">0</span>
+                            </button>
+                            <button type="button" class="gallery-tab" data-filter="factory" role="tab" aria-selected="false">
+                                Factory
+                                <span class="gallery-tab-count" data-count-for="factory">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/40 whitespace-nowrap" id="galleryStatus">
+                        Showing <span id="galleryVisibleCount">0</span> / <span id="galleryTotalCount">0</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ MASONRY GALLERY ============ -->
+        <section class="pb-14 sm:pb-16 lg:pb-20 bg-warm">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="gallery-masonry" id="galleryMasonry">
+
+                    <!-- Item 1 — Geofoam -->
+                    <figure class="gallery-item" data-category="geofoam"
+                        data-src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EPS Geofoam — Road Embankment"
+                        data-caption="Lightweight fill for civil infrastructure">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
+                            alt="EPS Geofoam road embankment" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Geofoam</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">01</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Road Embankment</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Lightweight fill for civil infrastructure.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 2 — EIFS -->
+                    <figure class="gallery-item" data-category="eifs"
+                        data-src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EIFS — Exterior Insulation System"
+                        data-caption="Continuous insulation with acrylic finish">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+                            alt="EIFS exterior insulation" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">EIFS</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">02</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">EIFS Facade</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Continuous insulation with acrylic finish.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 3 — Factory -->
+                    <figure class="gallery-item" data-category="factory"
+                        data-src="https://images.unsplash.com/photo-1581092335875-3a0d4d0c4b9e?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Manufacturing Facility — MIDC Talegaon"
+                        data-caption="360 T/year installed capacity">
+                        <img src="https://images.unsplash.com/photo-1581092335875-3a0d4d0c4b9e?q=80&w=800&auto=format&fit=crop"
+                            alt="Manufacturing facility" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Factory</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">03</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">MIDC Talegaon Facility</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">360 T/year installed EPS capacity.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 4 — Packaging -->
+                    <figure class="gallery-item" data-category="packaging"
+                        data-src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Industrial Packaging — Protective EPS"
+                        data-caption="Custom moulded protective components">
+                        <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=800&auto=format&fit=crop"
+                            alt="Industrial packaging" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Packaging</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">04</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Industrial Packaging</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Custom moulded protective components.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 5 — 3D Panel -->
+                    <figure class="gallery-item" data-category="panels"
+                        data-src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop"
+                        data-title="ECO-GEO EPS 3D Panel"
+                        data-caption="Modular load-bearing construction system">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop"
+                            alt="EPS 3D panel construction" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">3D Panels</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">05</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">ECO-GEO 3D Panel</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Modular load-bearing construction system.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 6 — Facade -->
+                    <figure class="gallery-item" data-category="facade"
+                        data-src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600&auto=format&fit=crop"
+                        data-title="RGBS Facade Profile"
+                        data-caption="Architectural precast detailing">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=800&auto=format&fit=crop"
+                            alt="Facade profile architectural precast" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Facade</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">06</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">RGBS Facade Profile</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Architectural precast detailing.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 7 — Factory -->
+                    <figure class="gallery-item" data-category="factory"
+                        data-src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Production Line — Board Cutting"
+                        data-caption="Precision CNC cutting">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&auto=format&fit=crop"
+                            alt="Production line cutting" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Factory</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">07</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">CNC Cutting Line</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Precision cutting for custom blocks.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 8 — Geofoam -->
+                    <figure class="gallery-item" data-category="geofoam"
+                        data-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EPS Geofoam — Bridge Abutment"
+                        data-caption="Load-bearing fill for bridge transitions">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800&auto=format&fit=crop"
+                            alt="Geofoam bridge abutment" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Geofoam</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">08</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Bridge Abutment</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Load-bearing fill for bridge transitions.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 9 — EIFS -->
+                    <figure class="gallery-item" data-category="eifs"
+                        data-src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EIFS — Modern Residential Facade"
+                        data-caption="Thermal envelope with decorative finish">
+                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop"
+                            alt="EIFS residential facade" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">EIFS</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">09</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Residential EIFS</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Thermal envelope with decorative finish.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 10 — Facade -->
+                    <figure class="gallery-item" data-category="facade"
+                        data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop"
+                        data-title="RGBS Mouldings — Window Surrounds"
+                        data-caption="Architectural detailing in EPS">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"
+                            alt="Window surrounds facade" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Facade</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">10</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Window Surrounds</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Architectural detailing in EPS.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 11 — Packaging -->
+                    <figure class="gallery-item" data-category="packaging"
+                        data-src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Polystyrene Bead — Raw Material"
+                        data-caption="Loose fill and cushioning">
+                        <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=800&auto=format&fit=crop"
+                            alt="Polystyrene bead" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Packaging</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">11</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Polystyrene Bead</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Loose fill and cushioning.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 12 — 3D Panel -->
+                    <figure class="gallery-item" data-category="panels"
+                        data-src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EPS 3D Panel — Wall System"
+                        data-caption="Structural + insulation in one unit">
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800&auto=format&fit=crop"
+                            alt="3D panel wall system" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">3D Panels</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">12</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">3D Panel Wall System</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Structural + insulation in one unit.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 13 — Factory -->
+                    <figure class="gallery-item" data-category="factory"
+                        data-src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Quality Control — Finished Blocks"
+                        data-caption="Every block inspected before dispatch">
+                        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800&auto=format&fit=crop"
+                            alt="Quality control" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Factory</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">13</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Quality Control</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Every block inspected before dispatch.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 14 — Geofoam -->
+                    <figure class="gallery-item" data-category="geofoam"
+                        data-src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop"
+                        data-title="Geofoam — Foundation Fill"
+                        data-caption="Reducing load on underlying soils">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop"
+                            alt="Geofoam foundation fill" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Geofoam</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">14</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Foundation Fill</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Reducing load on underlying soils.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 15 — Facade -->
+                    <figure class="gallery-item" data-category="facade"
+                        data-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop"
+                        data-title="RGBS Panels — Architectural Details"
+                        data-caption="Tongue-and-groove facade panels">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800&auto=format&fit=crop"
+                            alt="Architectural facade panels" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">Facade</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">15</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Architectural Panels</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Tongue-and-groove facade panels.</p>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Item 16 — EIFS -->
+                    <figure class="gallery-item" data-category="eifs"
+                        data-src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600&auto=format&fit=crop"
+                        data-title="EIFS — Commercial Building"
+                        data-caption="Continuous insulation facade">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=800&auto=format&fit=crop"
+                            alt="EIFS commercial building" loading="lazy" decoding="async" />
+                        <span class="gallery-item-chip">EIFS</span>
+                        <span class="gallery-item-expand"><i class="fas fa-expand"></i></span>
+                        <div class="gallery-item-overlay"></div>
+                        <figcaption class="gallery-item-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">16</span>
+                            </div>
+                            <h3 class="text-sm font-extrabold leading-tight">Commercial EIFS</h3>
+                            <p class="text-[10px] text-warm/70 leading-snug mt-1">Continuous insulation facade.</p>
+                        </figcaption>
+                    </figure>
+
+                </div>
+
+                <!-- Empty state -->
+                <div class="gallery-empty" id="galleryEmpty">
+                    <div class="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-teal-900/5 text-teal-900/40 mb-4">
+                        <i class="fas fa-search text-lg"></i>
+                    </div>
+                    <div class="text-lg font-extrabold text-teal-900 mb-1">No images in this category</div>
+                    <p class="text-sm text-teal-700/60">Try selecting a different filter above.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ CTA BAND ============ -->
+        <section class="py-12 sm:py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
+            <div class="max-w-content mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 sm:gap-6">
+                <div>
+                    <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Want to see it in person?</div>
+                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight">
+                        Request samples or schedule a facility visit<span class="text-gold">.</span>
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/contact.php"
+                        class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
+                        Contact Us
+                        <span class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                    </a>
+                    <a href="tel:+919158700128"
+                        class="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-white/20 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors whitespace-nowrap">
+                        <i class="fas fa-phone text-xs"></i>
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ LIGHTBOX ============ -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <div class="lightbox-frame">
+            <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close viewer">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="lightbox-img-wrap">
+                <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <img id="lightboxImg" src="" alt="" />
+                <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="lightbox-meta">
+                <div>
+                    <div class="lightbox-title" id="lightboxTitle">—</div>
+                    <div class="lightbox-caption" id="lightboxCaption">—</div>
+                </div>
+                <div class="lightbox-counter" id="lightboxCounter">01 / 16</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-mount"></div>
+
+    <script src="header/header.js" defer></script>
+    <script src="footer/footer.js" defer></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+            var tabs = document.querySelectorAll('.gallery-tab');
+            var statusVisible = document.getElementById('galleryVisibleCount');
+            var statusTotal = document.getElementById('galleryTotalCount');
+            var emptyState = document.getElementById('galleryEmpty');
+            var masonry = document.getElementById('galleryMasonry');
+
+            var currentFilter = 'all';
+
+            /* ---------- Counts ---------- */
+            function updateCounts() {
+                var counts = { all: items.length };
+                items.forEach(function (item) {
+                    var cat = item.getAttribute('data-category');
+                    counts[cat] = (counts[cat] || 0) + 1;
+                });
+                document.querySelectorAll('.gallery-tab-count').forEach(function (el) {
+                    var key = el.getAttribute('data-count-for');
+                    el.textContent = counts[key] || 0;
+                });
+                if (statusTotal) statusTotal.textContent = items.length;
+            }
+
+            /* ---------- Filter ---------- */
+            function applyFilter(filter) {
+                currentFilter = filter;
+                var visibleCount = 0;
+
+                items.forEach(function (item) {
+                    var cat = item.getAttribute('data-category');
+                    var show = (filter === 'all') || (cat === filter);
+                    item.classList.toggle('is-hidden', !show);
+                    if (show) visibleCount++;
+                });
+
+                tabs.forEach(function (tab) {
+                    var isActive = tab.getAttribute('data-filter') === filter;
+                    tab.classList.toggle('is-active', isActive);
+                    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                if (statusVisible) statusVisible.textContent = visibleCount;
+                if (emptyState) emptyState.classList.toggle('is-visible', visibleCount === 0);
+                if (masonry) masonry.style.display = visibleCount === 0 ? 'none' : '';
+
+                // Scroll active tab into view on mobile
+                var activeTab = document.querySelector('.gallery-tab.is-active');
+                if (activeTab && activeTab.parentNode) {
+                    activeTab.parentNode.scrollTo({
+                        left: activeTab.offsetLeft - 16,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    applyFilter(tab.getAttribute('data-filter'));
+                });
+            });
+
+            /* ---------- Lightbox ---------- */
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightboxImg');
+            var lightboxTitle = document.getElementById('lightboxTitle');
+            var lightboxCaption = document.getElementById('lightboxCaption');
+            var lightboxCounter = document.getElementById('lightboxCounter');
+            var btnClose = document.getElementById('lightboxClose');
+            var btnPrev = document.getElementById('lightboxPrev');
+            var btnNext = document.getElementById('lightboxNext');
+
+            var currentIndex = 0;
+            var filteredItems = [];
+            var scrollY = 0;
+
+            function pad(n) { return String(n).padStart(2, '0'); }
+
+            function getVisibleItems() {
+                return items.filter(function (item) {
+                    return !item.classList.contains('is-hidden');
+                });
+            }
+
+            function openLightbox(item) {
+                filteredItems = getVisibleItems();
+                currentIndex = filteredItems.indexOf(item);
+                if (currentIndex === -1) currentIndex = 0;
+                renderLightbox();
+
+                // Preserve scroll position for iOS
+                scrollY = window.scrollY || window.pageYOffset;
+                document.body.style.top = '-' + scrollY + 'px';
+
+                lightbox.classList.add('is-open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('lightbox-open');
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('lightbox-open');
+
+                // Restore scroll position
+                document.body.style.top = '';
+                window.scrollTo(0, scrollY);
+            }
+
+            function renderLightbox() {
+                var item = filteredItems[currentIndex];
+                if (!item) return;
+
+                var img = item.querySelector('img');
+                var src = item.getAttribute('data-src') || (img && img.src);
+                var title = item.getAttribute('data-title') || '';
+                var caption = item.getAttribute('data-caption') || '';
+
+                // Preload then swap
+                var pre = new Image();
+                pre.onload = function () {
+                    lightboxImg.src = src;
+                };
+                pre.onerror = function () {
+                    lightboxImg.src = src;
+                };
+                pre.src = src;
+
+                lightboxImg.alt = title;
+                lightboxTitle.textContent = title;
+                lightboxCaption.textContent = caption;
+                lightboxCounter.textContent = pad(currentIndex + 1) + ' / ' + pad(filteredItems.length);
+
+                // Hide nav buttons if only 1 image
+                var hideNav = filteredItems.length < 2;
+                btnPrev.style.display = hideNav ? 'none' : '';
+                btnNext.style.display = hideNav ? 'none' : '';
+            }
+
+            function nextLightbox() {
+                if (filteredItems.length < 2) return;
+                currentIndex = (currentIndex + 1) % filteredItems.length;
+                renderLightbox();
+            }
+
+            function prevLightbox() {
+                if (filteredItems.length < 2) return;
+                currentIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
+                renderLightbox();
+            }
+
+            /* ---------- Wire items ---------- */
+            items.forEach(function (item) {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openLightbox(item);
+                });
+                // Keyboard accessibility
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('role', 'button');
+                item.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(item);
+                    }
+                });
+            });
+
+            /* ---------- Wire controls ---------- */
+            btnClose.addEventListener('click', closeLightbox);
+            btnNext.addEventListener('click', nextLightbox);
+            btnPrev.addEventListener('click', prevLightbox);
+
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('is-open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightbox();
+                if (e.key === 'ArrowLeft') prevLightbox();
+            });
+
+            /* ---------- Touch swipe in lightbox ---------- */
+            var touchStartX = 0;
+            var touchStartY = 0;
+            var SWIPE_THRESHOLD = 50;
+
+            lightbox.addEventListener('touchstart', function (e) {
+                if (e.touches.length !== 1) return;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            lightbox.addEventListener('touchend', function (e) {
+                if (!e.changedTouches.length) return;
+                var dx = e.changedTouches[0].clientX - touchStartX;
+                var dy = e.changedTouches[0].clientY - touchStartY;
+
+                if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+                    if (dx < 0) nextLightbox();
+                    else prevLightbox();
+                }
+            }, { passive: true });
+
+            /* ---------- Init ---------- */
+            updateCounts();
+            applyFilter('all');
+
+            window.rtGalleryDebug = function () {
+                return {
+                    total: items.length,
+                    visible: getVisibleItems().length,
+                    filter: currentFilter,
+                    lightboxOpen: lightbox.classList.contains('is-open')
+                };
+            };
+        })();
+    </script>
+
+</body>
+
+</html>
