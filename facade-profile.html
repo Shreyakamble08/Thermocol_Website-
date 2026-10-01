@@ -50,152 +50,271 @@
     <!-- Page-specific styles -->
     <style>
         /* ========================================================
-           FACADE PROFILE PAGE — unique layout elements
+           FACADE PROFILE — Magazine Cover layout
            ======================================================== */
 
-        /* ---------- Editorial hero with corner framing ---------- */
-        .facade-hero-frame {
+        /* ---------- Full-bleed hero with vertical side rail ---------- */
+        .facade-hero {
             position: relative;
-        }
-
-        .facade-hero-frame::before,
-        .facade-hero-frame::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-color: #D8B64C;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .facade-hero-frame::before {
-            top: -14px;
-            left: -14px;
-            border-top: 2px solid #D8B64C;
-            border-left: 2px solid #D8B64C;
-        }
-
-        .facade-hero-frame::after {
-            bottom: -14px;
-            right: -14px;
-            border-bottom: 2px solid #D8B64C;
-            border-right: 2px solid #D8B64C;
-        }
-
-        /* ---------- Product category cards (Mouldings / Panels) ---------- */
-        .facade-product-card {
-            position: relative;
+            min-height: 320px;
             overflow: hidden;
-            border-radius: 2px;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.4s ease;
-        }
-
-        .facade-product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -20px rgba(0, 60, 71, 0.3);
-        }
-
-        .facade-product-card img {
-            transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .facade-product-card:hover img {
-            transform: scale(1.06);
-        }
-
-        /* ---------- Advantage row (horizontal chips with counter) ---------- */
-        .advantage-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 16px 18px;
-            background: #F7F7F2;
-            border-left: 3px solid #D8B64C;
-            border-radius: 2px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .advantage-item:hover {
-            background: #FCFCF9;
-            transform: translateX(4px);
-        }
-
-        .advantage-num {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 26px;
-            height: 26px;
             background: #003C47;
-            color: #D8B64C;
-            border-radius: 2px;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.06em;
-            flex-shrink: 0;
         }
 
-        /* ---------- Key features — 4-up compact grid ---------- */
-        .feature-tile {
-            position: relative;
-            padding: 22px 20px;
-            background: #F7F7F2;
-            border: 1px solid rgba(0, 60, 71, 0.08);
-            border-radius: 2px;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+        @media (min-width: 1024px) {
+            .facade-hero {
+                min-height: 380px;
+            }
         }
 
-        .feature-tile:hover {
-            border-color: rgba(216, 182, 76, 0.5);
-            transform: translateY(-2px);
+        .facade-hero-bg {
+            position: absolute;
+            inset: 0;
         }
 
-        .feature-tile-icon {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-            background: rgba(0, 60, 71, 0.06);
-            color: #003C47;
-            font-size: 14px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin-bottom: 14px;
-        }
-
-        .feature-tile:hover .feature-tile-icon {
-            background: #D8B64C;
-            color: #003C47;
-        }
-
-        /* ---------- Gallery grid (uniform tiles) ---------- */
-        .facade-gallery-tile {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            border-radius: 2px;
-            border: 1px solid #d5e6e9;
-            aspect-ratio: 4 / 5;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .facade-gallery-tile img {
+        .facade-hero-bg img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .facade-gallery-tile:hover {
-            border-color: rgba(216, 182, 76, 0.6);
-            box-shadow: 0 12px 28px -14px rgba(0, 60, 71, 0.2);
+        .facade-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg,
+                    rgba(0, 60, 71, 0.9) 0%,
+                    rgba(0, 60, 71, 0.55) 40%,
+                    rgba(0, 60, 71, 0.85) 100%);
         }
 
-        .facade-gallery-tile:hover img {
+        /* Vertical RGBS label on the left edge */
+        .facade-vertical-brand {
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            writing-mode: vertical-rl;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(216, 182, 76, 0.6);
+            z-index: 5;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .facade-vertical-brand {
+                display: block;
+            }
+        }
+
+        /* ---------- Product family horizontal cards ---------- */
+        .family-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            background: #F7F7F2;
+            border: 1px solid rgba(0, 60, 71, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .family-card {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .family-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(216, 182, 76, 0.5);
+            box-shadow: 0 20px 40px -20px rgba(0, 60, 71, 0.25);
+        }
+
+        .family-card-img {
+            position: relative;
+            overflow: hidden;
+            min-height: 240px;
+        }
+
+        @media (min-width: 768px) {
+            .family-card-img {
+                min-height: 320px;
+            }
+        }
+
+        .family-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .family-card:hover .family-card-img img {
             transform: scale(1.06);
+        }
+
+        .family-num {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #D8B64C;
+            color: #003C47;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            border-radius: 2px;
+        }
+
+        /* ---------- Mosaic gallery (varied tile sizes) ---------- */
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 160px;
+            gap: 12px;
+        }
+
+        @media (min-width: 640px) {
+            .mosaic-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: 180px;
+                gap: 14px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mosaic-grid {
+                grid-template-columns: repeat(6, 1fr);
+                grid-auto-rows: 200px;
+                gap: 16px;
+            }
+        }
+
+        .mosaic-tile {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #003C47;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .mosaic-tile:hover {
+            transform: scale(1.015);
+            box-shadow: 0 16px 32px -16px rgba(0, 60, 71, 0.4);
+            z-index: 2;
+        }
+
+        .mosaic-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .mosaic-tile:hover img {
+            transform: scale(1.05);
+        }
+
+        .mosaic-tile-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 60, 71, 0.9) 0%, rgba(0, 60, 71, 0.2) 60%, transparent 100%);
+        }
+
+        .mosaic-tile-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 18px;
+            color: #F7F7F2;
+        }
+
+        /* ---------- Feature ribbon (horizontal) ---------- */
+        .feature-ribbon {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(0, 60, 71, 0.08);
+            border: 1px solid rgba(0, 60, 71, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .feature-ribbon {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .feature-ribbon-cell {
+            background: #F7F7F2;
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-ribbon-cell:hover {
+            background: #FCFCF9;
+        }
+
+        .feature-ribbon-num {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: #D8B64C;
+        }
+
+        .feature-ribbon-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #003C47;
+            line-height: 1.2;
+        }
+
+        /* ---------- Advantage grid (numbered list, dense) ---------- */
+        .advantage-row {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 60, 71, 0.08);
+            transition: padding-left 0.3s ease;
+        }
+
+        .advantage-row:hover {
+            padding-left: 8px;
+        }
+
+        .advantage-row:last-child {
+            border-bottom: 0;
+        }
+
+        .advantage-row-num {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: rgba(0, 60, 71, 0.25);
+            transition: color 0.3s ease;
+        }
+
+        .advantage-row:hover .advantage-row-num {
+            color: #D8B64C;
         }
     </style>
 </head>
@@ -207,190 +326,200 @@
 
     <main>
 
-        <!-- ============ BREADCRUMB ============ -->
-        <div class="bg-warm-light border-b border-teal-900/5">
-            <div class="max-w-content mx-auto px-5 sm:px-6 py-3 flex items-center gap-2 text-[10px] tracking-ultra uppercase font-bold text-teal-900/40 overflow-x-auto whitespace-nowrap">
-                <a href="/index.php" class="hover:text-gold transition-colors">Home</a>
-                <span class="w-3 h-px bg-teal-900/20 flex-shrink-0"></span>
-                <a href="/index.php#solutions" class="hover:text-gold transition-colors">Products</a>
-                <span class="w-3 h-px bg-teal-900/20 flex-shrink-0"></span>
-                <span class="text-teal-900/70">Facade Profile</span>
+        <!-- ============ HERO ============ -->
+     
+        <section class="relative facade-hero">
+
+            <!-- Background image -->
+            <div class="facade-hero-bg">
+                <img src="https://img.magnific.com/free-photo/axelborg-towers-modern-architecture_181624-37834.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="Architectural facade with RGBS profiles" />
             </div>
-        </div>
 
-        <!-- ============ HERO (Editorial + Framed Image) ============ -->
-        <section class="relative bg-warm arch-grid pt-14 lg:pt-20 pb-14 lg:pb-16 overflow-hidden">
-            <div class="max-w-content mx-auto px-5 sm:px-6 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <!-- Overlay -->
+            <div class="facade-hero-overlay"></div>
 
-                <!-- Left: content -->
-                <div class="lg:col-span-6 relative">
-                    <div class="absolute -top-8 -left-2 lg:-left-6 pointer-events-none select-none z-0 hidden lg:block">
-                        <div class="text-[140px] font-black leading-none tracking-tighter text-teal-900/[0.05] tabular-nums">04</div>
+            <!-- Vertical RGBS label -->
+            <div class="facade-vertical-brand">
+                RGBS · Architectural Precast
+            </div>
+
+            <!-- Content -->
+            <div
+                class="relative z-10 max-w-content mx-auto px-5 sm:px-6 h-full flex items-center py-10 sm:py-12 lg:py-12 min-h-[360px] sm:min-h-[400px] lg:min-h-[460px]">
+
+                <div class="max-w-2xl text-warm">
+
+                    <!-- Top meta bar -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] tracking-ultra font-bold text-gold uppercase">
+                            Product 04
+                        </span>
+
+                        <span class="w-6 h-px bg-gold/60"></span>
+
+                        <span class="text-[10px] tracking-ultra font-bold text-warm/50 uppercase">
+                            Architectural Precast
+                        </span>
                     </div>
 
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="vertical-line-teal"></span>
-                            <span class="text-[10px] tracking-ultra text-teal-700 font-bold uppercase">Product 04 — Architectural Precast</span>
-                        </div>
+                    <!-- Headline -->
+                    <h1
+                        class="text-3xl sm:text-4xl lg:text-5xl xl:text-[4rem] font-extrabold leading-[1.03] tracking-tight text-warm">
+                        The future of<br>
+                        architectural precast<br>
+                        <span class="text-gold">is here.</span>
+                    </h1>
 
-                        <!-- "RGBS" wordmark chip -->
-                        <div class="mb-4 flex items-center gap-3">
-                            <span class="bg-teal-900 text-gold text-[10px] tracking-ultra font-extrabold px-2.5 py-1.5 rounded-sm">
-                                RGBS
+                    <!-- Divider -->
+                    <div class="mt-5 flex items-center gap-3">
+                        <span class="w-12 sm:w-16 h-0.5 bg-gold"></span>
+
+                        <span class="text-[9px] sm:text-[10px] tracking-ultra uppercase font-bold text-warm/70">
+                            First in India — Styrofoam facade systems
+                        </span>
+                    </div>
+
+                    <!-- Body -->
+                    <p class="mt-5 text-warm/70 text-sm sm:text-base leading-relaxed max-w-xl">
+                        Born from a desire to explore superior products with infinite design
+                        possibilities and an easy application system. RGBS brings lightweight
+                        architectural precast to Indian building facades — for beautification
+                        and protection.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+
+                        <a href="/contact.html"
+                            class="group inline-flex items-center gap-3 h-11 pl-5 pr-4 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors">
+
+                            Request a Quote
+
+                            <span
+                                class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform">
                             </span>
-                            <span class="text-[10px] tracking-ultra uppercase text-teal-900/40 font-bold">by Rishabh Thermocole</span>
-                        </div>
 
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.05] tracking-tight text-teal-900">
-                            The future of<br>
-                            architectural precast<br>
-                            <span class="text-gold">is here.</span>
-                        </h1>
+                        </a>
 
-                        <p class="mt-6 text-teal-700/70 text-base leading-relaxed max-w-lg">
-                            Born from a desire to explore superior products with infinite design
-                            possibilities, RGBS brings a revolutionary lightweight architectural
-                            precast system to India. First time in India — Styrofoam extended
-                            into building facades for beautification and protection.
-                        </p>
+                        <a href="#gallery"
+                            class="inline-flex items-center justify-center h-11 px-5 rounded-sm border border-warm/25 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                            View Gallery
+                        </a>
 
-                        <div class="mt-8 flex flex-wrap items-center gap-3">
-                            <a href="/contact.php"
-                                class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-teal-900 text-warm font-bold text-xs tracking-wide-plus uppercase hover:bg-teal-800 transition-colors">
-                                Request a Quote
-                                <span class="block w-2 h-2 border-t-2 border-r-2 border-gold rotate-45 group-hover:translate-x-1 transition-transform"></span>
-                            </a>
-                            <a href="#products"
-                                class="inline-flex items-center justify-center h-12 px-6 rounded-sm border border-teal-900/20 text-teal-900 font-semibold text-xs tracking-wide-plus hover:border-gold hover:text-gold transition-colors">
-                                Explore Range
-                            </a>
-                        </div>
-
-                        <!-- Inline stat row -->
-                        <div class="mt-10 grid grid-cols-3 gap-4 border-t border-teal-900/10 pt-6 max-w-lg">
-                            <div>
-                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">1<span class="text-base text-gold ml-0.5">st</span></div>
-                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">In India</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">∞</div>
-                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">Design options</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl sm:text-3xl font-extrabold text-teal-900">100<span class="text-base text-gold ml-0.5">%</span></div>
-                                <div class="text-[9px] tracking-ultra uppercase text-teal-900/40 font-bold mt-1">Customizable</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-                <!-- Right: framed image -->
-                <div class="lg:col-span-6 relative">
-                    <div class="facade-hero-frame relative max-w-md mx-auto lg:max-w-none">
-                        <div class="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden rounded-sm shadow-xl">
-                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop"
-                                alt="Architectural facade with RGBS profiles" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent"></div>
-                        </div>
-
-                        <div class="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-3 py-2 shadow-sm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 04</div>
-                            <div class="text-[10px] font-bold text-teal-900 mt-0.5">Facade Profile</div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
         </section>
 
-        <!-- ============ TWO PRODUCT FAMILIES (Mouldings / Panels) ============ -->
-        <section id="products" class="py-14 lg:py-16 bg-warm-light border-t border-teal-900/5">
+        <!-- ============ TWO PRODUCT FAMILIES (Horizontal cards) ============ -->
+        <section id="products" class="py-14 lg:py-16 bg-warm border-t border-teal-900/5">
             <div class="max-w-content mx-auto px-5 sm:px-6">
 
-                <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-8">
-                    <div class="lg:col-span-7">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="vertical-line-teal"></span>
-                            <span class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Product Range</span>
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="vertical-line-teal"></span>
+                        <div>
+                            <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">Product Range
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-900 leading-tight">
+                                Two product families<span class="text-gold">.</span>
+                            </h2>
                         </div>
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-900 leading-[1.05]">
-                            Two product families<span class="text-gold">.</span>
-                        </h2>
                     </div>
-                    <div class="lg:col-span-5">
-                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-md">
-                            RGBS mouldings and panels — precision-crafted EPS profiles
-                            finished with the strongest mineral coatings for exterior durability.
-                        </p>
-                    </div>
+                    <p class="text-teal-700/60 text-xs leading-relaxed max-w-sm">
+                        RGBS mouldings and panels — precision-crafted EPS profiles with mineral coatings.
+                    </p>
                 </div>
 
-                <!-- Two large product cards, side by side -->
-                <div class="grid md:grid-cols-2 gap-4 lg:gap-5">
+                <!-- Two horizontal family cards, stacked -->
+                <div class="space-y-4 lg:space-y-5">
 
-                    <!-- RGBS Mouldings -->
-                    <div class="facade-product-card group border border-teal-100 bg-warm">
-                        <div class="relative aspect-[4/3] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
-                                alt="RGBS Mouldings" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-teal-900/70 via-teal-900/20 to-transparent"></div>
-
-                            <div class="absolute top-4 left-4 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2.5 py-1.5 shadow-sm">
-                                <div class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/50">Family 01</div>
+                    <!-- Family 01 — Mouldings (image right) -->
+                    <div class="family-card group">
+                        <!-- Text (left) -->
+                        <div class="p-6 lg:p-8 order-2 md:order-1 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-[10px] tracking-ultra font-bold text-gold uppercase">Family 01</span>
+                                <span class="w-6 h-px bg-gold/60"></span>
                             </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-warm">
-                                <h3 class="text-xl lg:text-2xl font-extrabold leading-tight mb-1">RGBS Mouldings</h3>
-                                <p class="text-xs text-warm/70 leading-relaxed max-w-sm">
-                                    For windows, doors, floor-to-floor separation.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="p-5 lg:p-6">
-                            <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
-                                RGBS mouldings offer enhanced architectural beauty for the
-                                building facade. The major advantage is the capability to
-                                customize for large quantity requirements. Standard designs
-                                are available for retail projects.
+                            <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-4">
+                                RGBS Mouldings<span class="text-gold">.</span>
+                            </h3>
+                            <p class="text-sm text-teal-700/70 leading-relaxed mb-5 max-w-lg">
+                                RGBS mouldings offer mouldings for windows, doors and floor-to-floor
+                                separation to enhance the architectural beauty of the building facade.
+                                The major advantage is the capability to customise for large quantity
+                                requirements. Standard designs are available for retail projects.
                             </p>
-                            <a href="/contact.php"
-                                class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors">
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    Window surrounds, door frames, floor separation
+                                </li>
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    Customisable for large-quantity projects
+                                </li>
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    Standard designs for retail
+                                </li>
+                            </ul>
+                            <a href="/contact.html"
+                                class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
                                 Request Catalogue
                                 <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
                             </a>
                         </div>
+                        <!-- Image (right) -->
+                        <div class="family-card-img order-1 md:order-2">
+                            <img src="/Images/RGBS Mouldings.jpg"
+                                alt="RGBS Mouldings" />
+                            <span class="family-num">01</span>
+                        </div>
                     </div>
 
-                    <!-- RGBS Panels -->
-                    <div class="facade-product-card group border border-teal-100 bg-warm">
-                        <div class="relative aspect-[4/3] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop"
+                    <!-- Family 02 — Panels (image left) -->
+                    <div class="family-card group">
+                        <!-- Image (left) -->
+                        <div class="family-card-img order-1 md:order-1">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7OY5RQ5Oa4zpQY5d-Jg-ImFD4EFIH5WPhbAGJpMZm8_lSTA9Ba-jJvRql&s=10"
                                 alt="RGBS Panels" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-teal-900/70 via-teal-900/20 to-transparent"></div>
-
-                            <div class="absolute top-4 left-4 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2.5 py-1.5 shadow-sm">
-                                <div class="text-[9px] tracking-ultra uppercase font-bold text-teal-900/50">Family 02</div>
-                            </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-warm">
-                                <h3 class="text-xl lg:text-2xl font-extrabold leading-tight mb-1">RGBS Panels</h3>
-                                <p class="text-xs text-warm/70 leading-relaxed max-w-sm">
-                                    Wider design variety with tongue-and-groove joints.
-                                </p>
-                            </div>
+                            <span class="family-num">02</span>
                         </div>
-
-                        <div class="p-5 lg:p-6">
-                            <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
-                                RGBS panels are created with multiple possibilities, offering
-                                wider varieties of design to architects and end users. The
-                                joints between panels are designed using a precise tongue-and-
-                                groove method for seamless installation.
+                        <!-- Text (right) -->
+                        <div class="p-6 lg:p-8 order-2 md:order-2 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-[10px] tracking-ultra font-bold text-gold uppercase">Family 02</span>
+                                <span class="w-6 h-px bg-gold/60"></span>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-4">
+                                RGBS Panels<span class="text-gold">.</span>
+                            </h3>
+                            <p class="text-sm text-teal-700/70 leading-relaxed mb-5 max-w-lg">
+                                RGBS panels are created with multiple possibilities offering wider
+                                varieties of design to architects and end users. The joints between
+                                the panels are designed with a tongue-and-groove method for precise
+                                alignment and seamless installation.
                             </p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    Wider varieties of design options
+                                </li>
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    Tongue-and-groove joints
+                                </li>
+                                <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                    <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                    For architects and end users
+                                </li>
+                            </ul>
                             <a href="/contact.php"
-                                class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors">
+                                class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
                                 Request Catalogue
                                 <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
                             </a>
@@ -402,14 +531,87 @@
             </div>
         </section>
 
-        <!-- ============ ADVANTAGES (Split: text + 7 items) ============ -->
+        <!-- ============ KEY FEATURES (Feature Ribbon) ============ -->
+        <section class="py-12 lg:py-14 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="vertical-line-teal"></span>
+                    <div>
+                        <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">Key Features
+                        </div>
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight">
+                            Built for exterior performance<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Feature ribbon — 4 cells -->
+                <div class="feature-ribbon">
+
+                    <div class="feature-ribbon-cell">
+                        <span class="feature-ribbon-num">01</span>
+                        <div class="feature-ribbon-title">Fire Resistant</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Formulated for fire safety in exterior
+                            applications.</p>
+                    </div>
+
+                    <div class="feature-ribbon-cell">
+                        <span class="feature-ribbon-num">02</span>
+                        <div class="feature-ribbon-title">Water Resistant</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Mineral coatings repel moisture and
+                            rain.</p>
+                    </div>
+
+                    <div class="feature-ribbon-cell">
+                        <span class="feature-ribbon-num">03</span>
+                        <div class="feature-ribbon-title">Corrosion Resistant</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Withstands weather, salt and pollutants.
+                        </p>
+                    </div>
+
+                    <div class="feature-ribbon-cell">
+                        <span class="feature-ribbon-num">04</span>
+                        <div class="feature-ribbon-title">Crack Resistant</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Flexible system absorbs building
+                            movement.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ ADVANTAGES (Numbered list + Image) ============ -->
         <section class="py-14 lg:py-16 bg-warm border-t border-teal-900/5">
             <div class="max-w-content mx-auto px-5 sm:px-6">
 
                 <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
 
-                    <!-- Left: heading + intro -->
-                    <div class="lg:col-span-5 lg:sticky lg:top-28">
+                    <!-- Left: image -->
+                    <div class="lg:col-span-5 order-2 lg:order-1">
+                        <div class="relative sticky top-28">
+                            <div class="absolute -top-3 -left-3 w-14 h-14 border-t-2 border-l-2 border-gold/60"></div>
+                            <div class="absolute -bottom-3 -right-3 w-14 h-14 border-b-2 border-r-2 border-gold/60">
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                                alt="RGBS architectural precast on facade"
+                                class="relative w-full h-[300px] sm:h-[380px] lg:h-[500px] object-cover rounded-sm shadow-xl" />
+
+                            <!-- Overlay callout -->
+                            <div
+                                class="absolute bottom-5 left-5 right-5 bg-teal-900/90 backdrop-blur-sm p-4 rounded-sm">
+                                <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-1.5">First in
+                                    India</div>
+                                <p class="text-xs text-warm/70 leading-relaxed">
+                                    Extending Styrofoam into building facades — for beautification and protection.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: 7 advantages -->
+                    <div class="lg:col-span-7 order-1 lg:order-2">
                         <div class="flex items-center gap-3 mb-3">
                             <span class="vertical-line-teal"></span>
                             <span class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase">Advantages</span>
@@ -418,331 +620,89 @@
                             World-class precast,<br>
                             <span class="text-gold">revolutionary technology.</span>
                         </h2>
-                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-md">
+                        <p class="text-teal-700/60 text-sm leading-relaxed max-w-lg mb-8">
                             RGBS brings super lightweight architectural precast to the Indian
                             building industry. Styrofoam enables a lighter product, while the
-                            strongest minerals are used to produce weather-proof coatings.
+                            strongest minerals produce weather-proof coatings for exteriors.
                         </p>
 
-                        <!-- Highlight callout -->
-                        <div class="mt-6 p-4 bg-teal-900 text-warm rounded-sm">
-                            <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-1.5">First in India</div>
-                            <p class="text-xs text-warm/70 leading-relaxed">
-                                Extending Styrofoam into building facades for beautification and protection.
-                            </p>
-                        </div>
-                    </div>
+                        <!-- 7 advantages as numbered rows -->
+                        <div class="border-t border-teal-900/10">
 
-                    <!-- Right: 7 advantage items -->
-                    <div class="lg:col-span-7">
-                        <div class="grid sm:grid-cols-2 gap-3">
-
-                            <div class="advantage-item">
-                                <span class="advantage-num">01</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">01</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Insulation</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">Of buildings</div>
+                                    <div class="text-sm font-bold text-teal-900">Insulation of buildings</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">The EPS core delivers thermal
+                                        insulation as a natural side effect.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">02</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">02</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Ideal for Renovation</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">Retrofit-friendly</div>
+                                    <div class="text-sm font-bold text-teal-900">Ideal for renovation</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">Lightweight profiles easily retrofit
+                                        onto existing facades.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">03</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">03</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Aesthetics</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">To buildings</div>
+                                    <div class="text-sm font-bold text-teal-900">Aesthetics to buildings</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">Classic detailing — cornices, columns,
+                                        mouldings.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">04</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">04</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Super Lightweight</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">EPS core construction</div>
+                                    <div class="text-sm font-bold text-teal-900">Super lightweight</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">EPS core construction keeps handling
+                                        simple.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">05</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">05</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Easy Installation</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">Simple site application</div>
+                                    <div class="text-sm font-bold text-teal-900">Ease of installation</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">No heavy lifting or specialised
+                                        equipment required.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">06</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">06</span>
                                 <div>
-                                    <div class="text-sm font-bold text-teal-900">Economical</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">Cost effective</div>
+                                    <div class="text-sm font-bold text-teal-900">Economical and cost-effective</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">Save on labour and material vs. stone
+                                        or concrete.</div>
                                 </div>
                             </div>
 
-                            <div class="advantage-item">
-                                <span class="advantage-num">07</span>
+                            <div class="advantage-row">
+                                <span class="advantage-row-num">07</span>
                                 <div>
                                     <div class="text-sm font-bold text-teal-900">Paintable</div>
-                                    <div class="text-xs text-teal-700/60 mt-0.5">Any finish color</div>
+                                    <div class="text-xs text-teal-700/50 mt-0.5">Finishes accept any color — update
+                                        aesthetics easily.</div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
 
-        <!-- ============ KEY FEATURES (4 tiles) ============ -->
-        <section class="py-12 lg:py-14 bg-warm-light border-t border-teal-900/5">
-            <div class="max-w-content mx-auto px-5 sm:px-6">
 
-                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
-                    <div class="flex items-center gap-3">
-                        <span class="vertical-line-teal"></span>
-                        <div>
-                            <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">Key Features</div>
-                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight">
-                                Built for exterior performance<span class="text-gold">.</span>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-
-                    <div class="feature-tile">
-                        <div class="feature-tile-icon"><i class="fas fa-fire-extinguisher"></i></div>
-                        <h3 class="text-sm font-extrabold text-teal-900 mb-1">Fire Resistant</h3>
-                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Formulated for fire safety in exterior applications.</p>
-                    </div>
-
-                    <div class="feature-tile">
-                        <div class="feature-tile-icon"><i class="fas fa-tint-slash"></i></div>
-                        <h3 class="text-sm font-extrabold text-teal-900 mb-1">Water Resistant</h3>
-                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Mineral coatings repel moisture and rain.</p>
-                    </div>
-
-                    <div class="feature-tile">
-                        <div class="feature-tile-icon"><i class="fas fa-shield-halved"></i></div>
-                        <h3 class="text-sm font-extrabold text-teal-900 mb-1">Corrosion Resistant</h3>
-                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Withstands weather, salt and pollutants.</p>
-                    </div>
-
-                    <div class="feature-tile">
-                        <div class="feature-tile-icon"><i class="fas fa-crack"></i></div>
-                        <h3 class="text-sm font-extrabold text-teal-900 mb-1">Crack Resistant</h3>
-                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Flexible system absorbs building movement.</p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ============ APPLICATION GALLERY (7 uniform tiles) ============ -->
-        <section class="py-12 lg:py-14 bg-warm border-t border-teal-900/5">
-            <div class="max-w-content mx-auto px-5 sm:px-6">
-
-                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
-                    <div class="flex items-center gap-3">
-                        <span class="vertical-line-teal"></span>
-                        <div>
-                            <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">In Application</div>
-                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight">
-                                RGBS on facades<span class="text-gold">.</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <p class="text-teal-700/60 text-xs leading-relaxed max-w-sm">
-                        A visual range of what's possible with lightweight architectural precast.
-                    </p>
-                </div>
-
-                <!-- Uniform 7-tile grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 lg:gap-3">
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 01" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 05</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">01</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Window Surrounds</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 02" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 06</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">02</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Door Frames</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 03" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 07</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">03</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Floor Separation</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 04" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 08</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">04</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Cornices</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 05" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 09</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">05</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Panels</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1976&auto=format&fit=crop" alt="Facade profile 06" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 10</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">06</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Columns</h3>
-                        </div>
-                    </a>
-
-                    <a href="#" class="facade-gallery-tile group">
-                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop" alt="Facade profile 07" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/85 via-teal-900/10 to-transparent"></div>
-                        <div class="absolute top-3 left-3 bg-warm/95 backdrop-blur-sm border border-teal-900/10 rounded-sm px-2 py-1 shadow-sm">
-                            <div class="text-[8px] tracking-ultra uppercase font-bold text-teal-900/50">Fig. 11</div>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 text-warm">
-                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">07</div>
-                            <h3 class="text-sm font-extrabold leading-tight">Decorative Accents</h3>
-                        </div>
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ============ TECHNICAL DATASHEET ============ -->
-        <section id="specifications" class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark">
-            <div class="max-w-content mx-auto px-5 sm:px-6">
-
-                <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="vertical-line"></span>
-                            <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Technical Datasheet</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.1]">
-                            Engineered to your spec<span class="text-gold">.</span>
-                        </h2>
-                    </div>
-                    <a href="/contact.php"
-                        class="group inline-flex items-center gap-3 h-11 pl-5 pr-4 rounded-sm bg-gold text-teal-900 font-bold text-[10px] tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
-                        Download Catalogue
-                        <span class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
-                    </a>
-                </div>
-
-                <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-2xl">
-                    RGBS facade profiles are available in standard designs for retail projects
-                    and fully customizable for large-scale requirements. Contact our team for
-                    detailed technical drawings and finish samples.
-                </p>
-
-                <div class="datasheet grid grid-cols-1 sm:grid-cols-2 border-t border-white/10">
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Brand</span>
-                        <span class="datasheet-value">RGBS Architectural Precast</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Core Material</span>
-                        <span class="datasheet-value">Expanded Polystyrene (Styrofoam)</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Coating</span>
-                        <span class="datasheet-value">Mineral weather-proof finish</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Product Families</span>
-                        <span class="datasheet-value">Mouldings · Panels</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Joint System</span>
-                        <span class="datasheet-value">Tongue and groove (panels)</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Customization</span>
-                        <span class="datasheet-value">Standard + large-quantity custom</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Applications</span>
-                        <span class="datasheet-value">Windows · Doors · Cornices · Columns · Panels</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Finish Options</span>
-                        <span class="datasheet-value">Paintable · Any color</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Weather Performance</span>
-                        <span class="datasheet-value">Fire · Water · Corrosion · Crack resistant</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Installation</span>
-                        <span class="datasheet-value">Super lightweight · Easy to apply</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Sustainability</span>
-                        <span class="datasheet-value">Lightweight EPS · Reduced transport load</span>
-                    </div>
-                    <div class="datasheet-row">
-                        <span class="datasheet-label">Ideal For</span>
-                        <span class="datasheet-value">New builds · Renovation &amp; retrofit</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ============ CTA BAND ============ -->
+    <!-- ============ CTA BAND ============ -->
         <section class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark border-t border-warm/5">
-            <div class="max-w-content mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div
+                class="max-w-content mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 <div>
                     <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Ready to design?</div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
@@ -753,7 +713,8 @@
                     <a href="/contact.php"
                         class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
                         Request a Quote
-                        <span class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                        <span
+                            class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
                     </a>
                     <a href="tel:+919158700128"
                         class="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-white/20 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors whitespace-nowrap">
@@ -763,6 +724,119 @@
                 </div>
             </div>
         </section>
+
+        <!-- ============ MOSAIC GALLERY ============ -->
+        <section id="gallery" class="py-14 lg:py-16 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="vertical-line-teal"></span>
+                        <div>
+                            <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">Gallery</div>
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-900 leading-tight">
+                                RGBS on facades<span class="text-gold">.</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <p class="text-teal-700/60 text-xs leading-relaxed max-w-sm">
+                        A visual range of what's possible with lightweight architectural precast.
+                    </p>
+                </div>
+
+                <!-- Mosaic grid — 7 tiles, varied sizes -->
+                <div class="mosaic-grid">
+
+                    <!-- Tile 01 — 2×2 (large, featured) -->
+                    <a href="#" class="mosaic-tile group col-span-2 row-span-2">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop"
+                            alt="Facade with RGBS window surrounds" />
+                        <div class="mosaic-tile-overlay"></div>
+                       
+                        <div class="mosaic-tile-content">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-4 h-px bg-gold"></span>
+                                <span class="text-[9px] tracking-ultra uppercase font-bold text-gold">01</span>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-extrabold leading-tight">Window Surrounds</h3>
+                            <p class="text-[11px] text-warm/70 leading-snug mt-1 hidden sm:block">Refined architectural
+                                window detailing.</p>
+                        </div>
+                    </a>
+
+                    <!-- Tile 02 -->
+                    <a href="#" class="mosaic-tile group col-span-1 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                            alt="Door frames" />
+                        <div class="mosaic-tile-overlay"></div>
+                        <div class="mosaic-tile-content p-3">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">02</div>
+                            <h3 class="text-xs font-extrabold leading-tight">Door Frames</h3>
+                        </div>
+                    </a>
+
+                    <!-- Tile 03 -->
+                    <a href="#" class="mosaic-tile group col-span-1 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop"
+                            alt="Floor separation" />
+                        <div class="mosaic-tile-overlay"></div>
+                        <div class="mosaic-tile-content p-3">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">03</div>
+                            <h3 class="text-xs font-extrabold leading-tight">Floor Separation</h3>
+                        </div>
+                    </a>
+
+                    <!-- Tile 04 -->
+                    <a href="#" class="mosaic-tile group col-span-1 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                            alt="Cornices" />
+                        <div class="mosaic-tile-overlay"></div>
+                        <div class="mosaic-tile-content p-3">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">04</div>
+                            <h3 class="text-xs font-extrabold leading-tight">Cornices</h3>
+                        </div>
+                    </a>
+
+                    <!-- Tile 05 -->
+                    <a href="#" class="mosaic-tile group col-span-1 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1976&auto=format&fit=crop"
+                            alt="Panels" />
+                        <div class="mosaic-tile-overlay"></div>
+                        <div class="mosaic-tile-content p-3">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">05</div>
+                            <h3 class="text-xs font-extrabold leading-tight">Panels</h3>
+                        </div>
+                    </a>
+
+                    <!-- Tile 06 -->
+                    <a href="#" class="mosaic-tile group col-span-1 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
+                            alt="Columns" />
+                        <div class="mosaic-tile-overlay"></div>
+                        <div class="mosaic-tile-content p-3">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">06</div>
+                            <h3 class="text-xs font-extrabold leading-tight">Columns</h3>
+                        </div>
+                    </a>
+
+                    <!-- Tile 07 — 2×1 (wide) -->
+                    <a href="#" class="mosaic-tile group col-span-2 row-span-1">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+                            alt="Decorative accents" />
+                        <div class="mosaic-tile-overlay"></div>
+                       
+                        <div class="mosaic-tile-content">
+                            <div class="text-[9px] tracking-ultra uppercase font-bold text-gold mb-1">07</div>
+                            <h3 class="text-sm sm:text-base font-extrabold leading-tight">Decorative Accents</h3>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    
 
     </main>
 
@@ -775,7 +849,6 @@
         (function () {
             'use strict';
 
-            // Smooth scroll for internal anchors
             document.querySelectorAll('a[href^="#"]').forEach(function (a) {
                 a.addEventListener('click', function (e) {
                     var href = a.getAttribute('href');
