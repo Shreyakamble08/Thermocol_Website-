@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industrial Packaging — EPS Packaging Solutions — Rishabh Thermocole</title>
+    <meta name="description"
+        content="Industrial packaging solutions — EPS blocks, polystyrene bead, industrial moulding and cold-chain ice boxes. Made by Rishabh Thermocole in Maharashtra." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50: '#eef5f6', 100: '#d5e6e9', 200: '#aecdd4',
+                            300: '#7dafb9', 400: '#4b8d99', 500: '#2a6f7c',
+                            600: '#1e5864', 700: '#164550', 800: '#0e333c',
+                            900: '#003C47', 950: '#00262e'
+                        },
+                        green: { DEFAULT: '#3a7d5c', light: '#5a9e7a', dark: '#2a5f44' },
+                        gold: { DEFAULT: '#D8B64C', light: '#E5C65A', dark: '#b89a3a' },
+                        red: { DEFAULT: '#B8433A', light: '#d05a50' },
+                        warm: { DEFAULT: '#F7F7F2', light: '#FCFCF9', dark: '#EEEEE7' }
+                    },
+                    letterSpacing: { 'ultra': '0.2em', 'wide-plus': '0.12em' },
+                    maxWidth: { content: '1200px' }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header/header.css" />
+    <link rel="stylesheet" href="footer/footer.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+        /* ========================================================
+           INDUSTRIAL PACKAGING — Catalogue Showcase layout
+           ======================================================== */
+
+        /* ---------- Dark hero with vertical stat stack ---------- */
+        .pack-hero {
+            background: linear-gradient(180deg, #003C47 0%, #002c35 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pack-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+
+        /* ---------- Sticky sidebar nav ---------- */
+        .pack-sidebar {
+            position: sticky;
+            top: 120px;
+        }
+
+        .pack-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-left: 2px solid rgba(0, 60, 71, 0.1);
+            background: transparent;
+            color: rgba(0, 60, 71, 0.6);
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pack-nav-link:hover {
+            border-left-color: #D8B64C;
+            color: #003C47;
+            background: rgba(216, 182, 76, 0.04);
+            padding-left: 18px;
+        }
+
+        .pack-nav-link.is-active {
+            border-left-color: #D8B64C;
+            color: #003C47;
+            background: rgba(216, 182, 76, 0.06);
+        }
+
+        .pack-nav-num {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: rgba(0, 60, 71, 0.35);
+            width: 20px;
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .pack-nav-link:hover .pack-nav-num,
+        .pack-nav-link.is-active .pack-nav-num {
+            color: #D8B64C;
+        }
+
+        /* ---------- Product detail rows ---------- */
+        .pack-product {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            background: #F7F7F2;
+            border: 1px solid rgba(0, 60, 71, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            scroll-margin-top: 120px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .pack-product {
+                grid-template-columns: 5fr 7fr;
+            }
+        }
+
+        .pack-product:hover {
+            border-color: rgba(216, 182, 76, 0.5);
+            box-shadow: 0 12px 28px -16px rgba(0, 60, 71, 0.2);
+        }
+
+        .pack-product-img {
+            position: relative;
+            overflow: hidden;
+            min-height: 260px;
+        }
+
+        @media (min-width: 768px) {
+            .pack-product-img {
+                min-height: 320px;
+            }
+        }
+
+        .pack-product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .pack-product:hover .pack-product-img img {
+            transform: scale(1.04);
+        }
+
+        /* Corner counter tab */
+        .pack-product-num {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #003C47;
+            color: #D8B64C;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            padding: 6px 10px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        /* Info block */
+        .pack-product-info {
+            padding: 24px 24px 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .pack-product-info {
+                padding: 32px 34px;
+            }
+        }
+
+        /* Chips */
+        .pack-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            background: rgba(216, 182, 76, 0.12);
+            color: #8a7028;
+            border-radius: 2px;
+        }
+
+        /* ---------- Delivery promise band ---------- */
+        .promise-band {
+            background: linear-gradient(90deg, #003C47 0%, #164550 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise-band::before {
+            content: '';
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 182, 76, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ---------- Cold chain callout (5-up mini grid) ---------- */
+        .coldchain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: rgba(0, 60, 71, 0.08);
+            border: 1px solid rgba(0, 60, 71, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .coldchain-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .coldchain-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .coldchain-cell {
+            background: #F7F7F2;
+            padding: 20px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .coldchain-cell:hover {
+            background: #FCFCF9;
+        }
+
+        .coldchain-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 60, 71, 0.06);
+            color: #003C47;
+            border-radius: 2px;
+            font-size: 13px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 4px;
+        }
+
+        .coldchain-cell:hover .coldchain-icon {
+            background: #D8B64C;
+            color: #003C47;
+        }
+
+        /* ---------- Datasheet dark ---------- */
+        .datasheet {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 640px) {
+            .datasheet {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .datasheet-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .datasheet-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            flex-shrink: 0;
+            min-width: 140px;
+        }
+
+        .datasheet-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #F7F7F2;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-warm text-teal-900 antialiased overflow-x-hidden">
+
+    <!-- Header mount -->
+    <div id="header-mount"></div>
+
+    <main>
+
+        <!-- ============ HERO ============ -->
+        <section class="relative pack-hero">
+            <div class="pack-hero-grid"></div>
+
+            <div
+                class="relative max-w-content mx-auto px-5 sm:px-6 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                <!-- Left: content -->
+                <div class="lg:col-span-7 text-warm">
+
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="w-8 h-px bg-gold"></span>
+                        <span class="text-[10px] tracking-ultra text-gold font-bold uppercase">Product 05 — Industrial
+                            Packaging</span>
+                    </div>
+
+                    <h1
+                        class="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.05] tracking-tight text-warm">
+                        Packaging that<br>
+                        protects what matters<span class="text-gold">.</span>
+                    </h1>
+
+                    <div class="mt-6 flex items-center gap-3">
+                        <span class="w-12 h-0.5 bg-gold"></span>
+                        <p class="text-warm/70 text-xs tracking-wide-plus uppercase font-bold">
+                            EPS blocks · Beads · Mouldings · Cold chain
+                        </p>
+                    </div>
+
+                    <p class="mt-6 text-warm/70 text-base leading-relaxed max-w-xl">
+                        Customised industrial packaging and insulation boxes — engineered
+                        for protective transport of sensitive and fragile goods. From raw
+                        EPS blocks to hand-moulded components, we cover the full packaging
+                        chain for industrial clients.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="mt-8 flex flex-wrap items-center gap-3">
+                        <a href="/contact.html"
+                            class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors">
+                            Request a Quote
+                            <span
+                                class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                        </a>
+                        <a href="#catalogue"
+                            class="inline-flex items-center justify-center h-12 px-6 rounded-sm border border-warm/25 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors">
+                            View Catalogue
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right: vertical stat stack -->
+                <div class="lg:col-span-5">
+                    <div class="border-t border-warm/10">
+
+                        <div class="flex items-center gap-5 py-5 border-b border-warm/10">
+                            <div class="text-3xl lg:text-4xl font-extrabold text-gold tabular-nums w-20 flex-shrink-0">
+                                2016</div>
+                            <div>
+                                <div class="text-sm font-bold text-warm">Established</div>
+                                <div class="text-[11px] text-warm/50 mt-0.5">Serving Maharashtra's industries since
+                                    launch.</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-5 py-5 border-b border-warm/10">
+                            <div class="text-3xl lg:text-4xl font-extrabold text-gold tabular-nums w-20 flex-shrink-0">
+                                04</div>
+                            <div>
+                                <div class="text-sm font-bold text-warm">Product families</div>
+                                <div class="text-[11px] text-warm/50 mt-0.5">Blocks · Beads · Mouldings · Ice boxes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-5 py-5">
+                            <div class="text-3xl lg:text-4xl font-extrabold text-gold tabular-nums w-20 flex-shrink-0">
+                                360T</div>
+                            <div>
+                                <div class="text-sm font-bold text-warm">Annual capacity</div>
+                                <div class="text-[11px] text-warm/50 mt-0.5">Installed EPS production per year.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ============ CATALOGUE (Sidebar + product detail cards) ============ -->
+        <section id="catalogue" class="py-14 lg:py-16 bg-warm border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+
+                    <!-- Sticky sidebar nav -->
+                    <aside class="hidden lg:block lg:col-span-3">
+                        <div class="pack-sidebar">
+                            <div class="text-[10px] tracking-ultra uppercase font-bold text-teal-900/40 mb-4">On this
+                                page</div>
+
+                            <nav class="space-y-0 border-t border-teal-900/8">
+                                <a href="#eps-blocks" class="pack-nav-link is-active">
+                                    <span class="pack-nav-num">01</span>
+                                    <span>EPS Blocks</span>
+                                </a>
+                                <a href="#polystyrene" class="pack-nav-link">
+                                    <span class="pack-nav-num">02</span>
+                                    <span>Polystyrene Bead</span>
+                                </a>
+                                <a href="#moulding" class="pack-nav-link">
+                                    <span class="pack-nav-num">03</span>
+                                    <span>Industrial Moulding</span>
+                                </a>
+                                <a href="#ice-boxes" class="pack-nav-link">
+                                    <span class="pack-nav-num">04</span>
+                                    <span>Ice Boxes</span>
+                                </a>
+                            </nav>
+
+                            <!-- Contact block -->
+                            <div class="mt-8 p-4 bg-warm-light border border-teal-100 rounded-sm">
+                                <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Need help?
+                                </div>
+                                <p class="text-xs text-teal-700/60 leading-relaxed mb-3">
+                                    Speak with our packaging team for a custom quote.
+                                </p>
+                                <a href="/contact.html"
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors">
+                                    Contact
+                                    <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Product details -->
+                    <div class="lg:col-span-9">
+
+                        <!-- ============ 01 — EPS Blocks ============ -->
+                        <article id="eps-blocks" class="pack-product">
+                            <div class="pack-product-img">
+                                <span class="pack-product-num">01</span>
+                                <img src="https://formainsulation.com/wp-content/uploads/2024/05/eps-blocks.jpeg"
+                                    alt="EPS Blocks" />
+                            </div>
+                            <div class="pack-product-info">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="pack-chip">Bulk Packaging</span>
+                                        <span class="pack-chip">Sheets &amp; Blocks</span>
+                                    </div>
+                                    <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-3">
+                                        EPS Blocks<span class="text-gold">.</span>
+                                    </h3>
+                                    <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
+                                        Rishabh Thermocole Arts is a leading manufacturer of Expanded
+                                        Polystyrene (EPS) in Maharashtra — EPS block and sheet
+                                        manufacturing for industrial packaging applications.
+                                    </p>
+                                    <ul class="space-y-2 mb-5">
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Multiple densities and block sizes
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Custom-cut to project specification
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Lightweight, protective, and cost-effective
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="/contact.php"
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
+                                    Enquire about EPS Blocks
+                                    <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- ============ 02 — Polystyrene Bead ============ -->
+                        <article id="polystyrene" class="pack-product">
+                            <div class="pack-product-img">
+                                <span class="pack-product-num">02</span>
+                                <img src="https://formainsulation.com/wp-content/uploads/2024/05/EPS-Beads-1.jpeg"
+                                    alt="Polystyrene Bead" />
+                            </div>
+                            <div class="pack-product-info">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="pack-chip">Raw Material</span>
+                                        <span class="pack-chip">Loose Fill</span>
+                                    </div>
+                                    <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-3">
+                                        Polystyrene Bead<span class="text-gold">.</span>
+                                    </h3>
+                                    <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
+                                        We are a leading manufacturer of polystyrene bead —
+                                        suitable for loose-fill packaging, bean-bag refills, and
+                                        industrial protective cushioning applications.
+                                    </p>
+                                    <ul class="space-y-2 mb-5">
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Consistent density and quality
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Ideal for cushioning fragile goods
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Bulk quantity supply
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="/contact.html"
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
+                                    Enquire about Beads
+                                    <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- ============ 03 — Industrial Moulding ============ -->
+                        <article id="moulding" class="pack-product">
+                            <div class="pack-product-img">
+                                <span class="pack-product-num">03</span>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmCaTlEd_qG4D5iJPiJ81HL3sDH1lAMoXNsKSOYRTVdwd4MeEovRv9bEU&s=10"
+                                    alt="Industrial Moulding" />
+                            </div>
+                            <div class="pack-product-info">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="pack-chip">Custom Moulded</span>
+                                        <span class="pack-chip">Hand Fabricated</span>
+                                    </div>
+                                    <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-3">
+                                        Industrial Moulding<span class="text-gold">.</span>
+                                    </h3>
+                                    <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
+                                        When it comes to thermocol moulding, we create hand-moulded
+                                        items as per the customer requirements using the scooping
+                                        technique. Also available: automatic shape moulding for
+                                        higher-volume production.
+                                    </p>
+                                    <ul class="space-y-2 mb-5">
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Hand moulding via scooping technique
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Automatic shape moulding (1400 × 1200 mm)
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Built to your product's exact dimensions
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="/contact.php"
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
+                                    Enquire about Moulding
+                                    <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- ============ 04 — Ice Boxes ============ -->
+                        <article id="ice-boxes" class="pack-product">
+                            <div class="pack-product-img">
+                                <span class="pack-product-num">04</span>
+                                <img src="https://cdn-agfkn.nitrocdn.com/VCawmbhrOxZbaBYNZONCnawYGTkJqRfY/assets/images/optimized/rev-10ac6dd/www.epackindia.com/wp-content/uploads/2019/08/best-quality-thermocol-boxes-service-provider-in-india-1.jpg"
+                                    alt="Ice Boxes" />
+                            </div>
+                            <div class="pack-product-info">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="pack-chip">Cold Chain</span>
+                                        <span class="pack-chip">GELID Series</span>
+                                    </div>
+                                    <h3 class="text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight mb-3">
+                                        Ice Boxes<span class="text-gold">.</span>
+                                    </h3>
+                                    <p class="text-sm text-teal-700/70 leading-relaxed mb-4">
+                                        Being one of the top cold-chain packaging manufacturers,
+                                        we offer different variants of GELID thermocol boxes —
+                                        engineered for temperature-sensitive transport of seafood,
+                                        pharma, dairy, and perishables.
+                                    </p>
+                                    <ul class="space-y-2 mb-5">
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Multiple sizes for different payloads
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Excellent thermal retention
+                                        </li>
+                                        <li class="flex items-start gap-2 text-xs text-teal-700/70">
+                                            <span class="w-1 h-1 mt-1.5 bg-gold rounded-sm flex-shrink-0"></span>
+                                            Ideal for seafood, pharma, dairy
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="/contact.php"
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold tracking-wide-plus uppercase text-teal-900 hover:text-gold transition-colors self-start">
+                                    Enquire about Ice Boxes
+                                    <span class="block w-1.5 h-1.5 border-t-2 border-r-2 border-gold rotate-45"></span>
+                                </a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ COLD CHAIN (5-up mini grid) ============ -->
+        <section class="py-12 lg:py-14 bg-warm-light border-t border-teal-900/5">
+            <div class="max-w-content mx-auto px-5 sm:px-6">
+
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="vertical-line-teal"></span>
+                    <div>
+                        <div class="text-[10px] tracking-ultra text-teal-600 font-bold uppercase mb-1">Cold Chain Focus
+                        </div>
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 leading-tight">
+                            Temperature-sensitive transport<span class="text-gold">.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="coldchain-grid">
+
+                    <div class="coldchain-cell">
+                        <span class="coldchain-icon"><i class="fas fa-fish"></i></span>
+                        <div class="text-sm font-extrabold text-teal-900 leading-tight">Seafood</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Ice boxes for fresh catch transport.</p>
+                    </div>
+
+                    <div class="coldchain-cell">
+                        <span class="coldchain-icon"><i class="fas fa-pills"></i></span>
+                        <div class="text-sm font-extrabold text-teal-900 leading-tight">Pharma</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Insulated boxes for
+                            temperature-sensitive medicines.</p>
+                    </div>
+
+                    <div class="coldchain-cell">
+                        <span class="coldchain-icon"><i class="fas fa-cheese"></i></span>
+                        <div class="text-sm font-extrabold text-teal-900 leading-tight">Dairy</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Cold retention for dairy supply chains.
+                        </p>
+                    </div>
+
+                    <div class="coldchain-cell">
+                        <span class="coldchain-icon"><i class="fas fa-carrot"></i></span>
+                        <div class="text-sm font-extrabold text-teal-900 leading-tight">Perishables</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">Fruits, vegetables, and cut flowers.</p>
+                    </div>
+
+                    <div class="coldchain-cell">
+                        <span class="coldchain-icon"><i class="fas fa-snowflake"></i></span>
+                        <div class="text-sm font-extrabold text-teal-900 leading-tight">Ice Boxes</div>
+                        <p class="text-[11px] text-teal-700/60 leading-relaxed">GELID series in multiple size variants.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ CTA BAND ============ -->
+        <section class="py-14 lg:py-16 bg-teal-900 text-warm arch-grid-dark border-t border-warm/5">
+            <div
+                class="max-w-content mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div>
+                    <div class="text-[10px] tracking-ultra uppercase font-bold text-gold mb-2">Ready to package?</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+                        Talk to our team about your packaging requirement<span class="text-gold">.</span>
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/contact.html"
+                        class="group inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-sm bg-gold text-teal-900 font-bold text-xs tracking-wide-plus uppercase hover:bg-gold-light transition-colors whitespace-nowrap">
+                        Request a Quote
+                        <span
+                            class="block w-2 h-2 border-t-2 border-r-2 border-teal-900 rotate-45 group-hover:translate-x-1 transition-transform"></span>
+                    </a>
+                    <a href="tel:+919158700128"
+                        class="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-white/20 text-warm font-semibold text-xs tracking-wide-plus uppercase hover:border-gold hover:text-gold transition-colors whitespace-nowrap">
+                        <i class="fas fa-phone text-xs"></i>
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-mount"></div>
+
+    <script src="header/header.js" defer></script>
+    <script src="footer/footer.js" defer></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var href = a.getAttribute('href');
+                    if (href.length > 1) {
+                        var target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                            // Update sidebar active state
+                            var navLinks = document.querySelectorAll('.pack-nav-link');
+                            navLinks.forEach(function (link) {
+                                link.classList.toggle('is-active', link.getAttribute('href') === href);
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Highlight sidebar link on scroll (desktop only)
+            var productSections = document.querySelectorAll('.pack-product');
+            var navLinks = document.querySelectorAll('.pack-nav-link');
+
+            if (productSections.length && navLinks.length) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            var id = '#' + entry.target.id;
+                            navLinks.forEach(function (link) {
+                                link.classList.toggle('is-active', link.getAttribute('href') === id);
+                            });
+                        }
+                    });
+                }, {
+                    rootMargin: '-30% 0px -60% 0px',
+                    threshold: 0
+                });
+
+                productSections.forEach(function (section) {
+                    observer.observe(section);
+                });
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
